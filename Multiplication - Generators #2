@@ -1,0 +1,13 @@
+function* generator(a) {
+  for(let b=1;b<=10;b++){
+    let c = b *a;
+    yield `${a} x ${b} = ${c}`;
+  }
+  
+}
+
+const gen = generator(3);
+
+for (const result of gen) {
+  console.log(result);
+}
