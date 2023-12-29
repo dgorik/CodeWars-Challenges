@@ -1,0 +1,54 @@
+function minimumSum(values, n) {
+  if (values.length === 0 || n===0){
+    return 0;
+  }
+  
+  else{
+    let minSum = 0;
+    values.sort(function(a,b){
+      return a-b;
+    });
+    if (n > values.length){
+      for (let i=0; i<values.length; i++){
+        minSum += values[i]
+      } 
+    }
+    else {
+      for (let i=0; i<n; i++){
+        minSum += values[i]
+      }
+    }
+    return minSum
+  } 
+}
+
+function maximumSum(values, n) {
+  if (values.length === 0 || n===0){
+    return 0;
+  }
+  else {
+    let maxSum = 0;
+    values.sort(function(a,b){
+    return b-a;
+    });
+    if (n > values.length){
+      for (let j=0; j<values.length; j++){
+        maxSum += values[j]
+      } 
+    }
+    else{
+      for (let j=0; j<n; j++){
+        maxSum += values[j]
+      }
+    }
+  return maxSum
+  
+  }
+  
+}
+
+let values = [5,4,3,2,1]
+
+minimumSum(values, 2)
+
+//maximumSum(values, 3)
