@@ -1,0 +1,27 @@
+function findOdd(A) {
+  //happy coding!
+  var occurances = A.reduce(function (acc, currentValue) {
+  if (currentValue in acc) {
+    acc[currentValue]++;
+} else {
+    acc[currentValue] = 1;
+}
+  return acc;
+},{});
+
+  for (var key in occurances) {
+    if(occurances[key]%2 != 0){
+      return parseInt(key);
+    }
+  }
+  
+  return null;
+  
+}
+
+x = findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5])
+  
+console.log(x);
+
+
+
