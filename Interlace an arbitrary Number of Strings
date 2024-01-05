@@ -1,0 +1,50 @@
+// function combineStrings(...stringsHolder) {
+//   let answer = '';
+//   if(stringsHolder.length == 1){
+//     return stringsHolder[0];
+//   }
+  
+//   else if (stringsHolder.length == 0){
+//     return answer
+//   }
+  
+//   else{
+//     let lstring = stringsHolder.reduce((max, current) => (current.length > max.length ? current : max), "");
+//     for(i = 0; i < lstring.length; i++){
+//       for(j = 0; j < stringsHolder.length; j++){
+//         if(stringsHolder[j][i] == null){
+//           stringsHolder = stringsHolder.filter(element => element !== stringsHolder[j]);  
+//           break;
+//         }
+//         answer += stringsHolder[j][i]
+        
+//       }       
+//     }     
+
+//   return answer;
+// }
+
+//   }
+  
+// x = combineStrings('abcd', '123', '£$%')
+
+// console.log(x)
+
+function combineStrings(...strings) {
+  let maxLength = Math.max(...strings.map(str => str.length));
+  let result = '';
+
+  for (let i = 0; i < maxLength; i++) {
+    for (let j = 0; j < strings.length; j++) {
+      if (i < strings[j].length) {
+        result += strings[j][i];
+      }
+    }
+  }
+
+  return result;
+}
+
+
+let interlaced = combineStrings('abc', '123', 'xyz');
+console.log(interlaced); // Output: 'a1bx2cy3z'
