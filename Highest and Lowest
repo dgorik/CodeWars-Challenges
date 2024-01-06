@@ -1,0 +1,15 @@
+function highAndLow(numbers){
+  array = numbers.split(" ")
+  for(i = 0; i < array.length; i++){
+    array[i] = Number(array[i])
+  }
+  array.sort((a,b) => a-b)
+  let min = array[0]
+  let max = array[array.length - 1];
+  let answer = `${max} ${min}`
+  return answer
+}
+
+x = highAndLow("8 3 -5 42 -1 0 0 -9 4 7 4 -4")
+
+console.log(x)
