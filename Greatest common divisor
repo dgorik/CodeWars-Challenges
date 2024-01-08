@@ -1,0 +1,30 @@
+// function mygcd(x,y){
+//   let max  = 1;
+//   if ( x > 1 && y > 1){
+//     for ( let i = 1; i <= Math.min(x,y); i++){
+//       if(x%i == 0 && y%i == 0){
+//         max = i;
+//       }
+//     }
+//   }
+//   return max;
+   
+// }
+
+
+// Optimized version of the code above (The Euclidean algorithm)
+
+function mygcd(x, y) {
+  while(y !== 0){
+    let temp = y;
+    y = x%y;
+    x = temp;
+   
+  }
+  return x;
+}
+
+
+x = mygcd(77,12)
+
+console.log(x)
