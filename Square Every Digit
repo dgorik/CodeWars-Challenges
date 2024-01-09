@@ -1,0 +1,10 @@
+function squareDigits(num){
+  
+num = num.toString();
+  
+ const squaredString = [...num].map(char => parseInt(char)** 2).join('');
+
+return parseInt(squaredString);
+}
+
+let x = squareDigits(91)
