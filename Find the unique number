@@ -1,0 +1,14 @@
+let array = [];
+
+function findUniq(arr) {
+  let array = arr.filter(function (item, index, array) {
+        return array.indexOf(item) == arr.lastIndexOf(item);
+    });
+   let result = array[0]
+   return result
+    
+}
+
+x = findUniq([ 3, 10, 2, 2, 3])
+
+console.log(x)
