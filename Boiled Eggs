@@ -1,0 +1,26 @@
+function cookingTime(eggs) {
+  let time = 0;
+  
+  if(eggs === 0){
+    time = 0;
+  }
+
+  else if( eggs > 0 && eggs <=8){
+    time = 5;
+  }
+  
+  else{
+    if(eggs%8 ===0){
+      time = eggs/8 * 5;
+    }
+    else{
+      time = Math.floor(eggs/8) * 5 + 5;
+    }
+  }
+  return time;
+}
+
+
+x = cookingTime(10);
+
+console.log(x)
