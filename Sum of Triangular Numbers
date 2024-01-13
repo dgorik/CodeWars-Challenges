@@ -1,0 +1,31 @@
+/**
+ * Calculates the sum of the triangular numbers up to a given level.
+ * @param {number} n - The level up to which triangular numbers are calculated.
+ * @returns {number} - The sum of the triangular numbers.
+ */
+function sumTriangularNumbers(n) {
+  // Check if the input is less than or equal to 0
+  if (n <= 0) {
+    // If so, return 0 as there are no triangular numbers to sum
+    return 0;
+  } else {
+    // Initialize variables to store the sum and an array to store each triangular number
+    let sum = 0;
+    let array = [];
+
+    // Loop through the levels to calculate and store triangular numbers
+    for (let i = 1; i <= n; i++) {
+      sum += i;
+      array.push(sum);
+    }
+
+    // Return the sum using the reduce method on the array of triangular numbers
+    return array.reduce((acc, element) => acc + element, 0);
+  }
+}
+
+// Example usage: Calculate the sum of triangular numbers up to level 4
+const x = sumTriangularNumbers(4);
+
+// Display the result
+console.log(x);
