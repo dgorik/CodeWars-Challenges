@@ -1,0 +1,30 @@
+// Function to create a formatted phone number
+function createPhoneNumber(numbers) {
+  // Extract the first three digits and add "(" at the beginning and ")" at the end
+  let firstThree = numbers.slice(0, 3);
+  firstThree.unshift("(");
+  firstThree.push(")");
+  console.log(firstThree);
+
+  // Extract the middle three digits and add a space at the beginning
+  let middleThree = numbers.slice(3, 6);
+  middleThree.unshift(" ");
+  console.log(middleThree);
+
+  // Extract the last four digits and add a "-" at the beginning
+  let lastFour = numbers.slice(-4);
+  lastFour.unshift("-");
+  console.log(lastFour);
+
+  // Concatenate the three parts to form the complete phone number
+  let result = firstThree.concat(middleThree, lastFour);
+
+  // Join the array elements into a single string
+  result = result.join('');
+
+  // Return the formatted phone number
+  return result;
+}
+
+// Example usage
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
