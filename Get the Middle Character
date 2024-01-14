@@ -1,0 +1,18 @@
+function getMiddle(s) {
+  let answer = '';
+
+  // Check if the length of the string is odd
+  if (s.length % 2 !== 0) {
+    // If odd, get the middle character
+    answer = s[Math.ceil(s.length / 2) - 1];
+  } else {
+    // If even, get the two middle characters
+    answer = s[s.length / 2 - 1] + s[s.length / 2];
+  }
+
+  return answer;
+}
+
+// Example usage:
+const x = getMiddle("testing");
+console.log(x); // Output: "t"
