@@ -1,0 +1,29 @@
+function filter_list(l) {
+  // Initialize an empty array to store numeric elements.
+  let array = [];
+  
+  // Iterate through each element in the input list.
+  l.forEach((element) => {
+    // Check if the element is of type 'number'.
+    if (typeof element === "number") {
+      // If it is a number, add it to the array.
+      array.push(element);
+    }
+  });
+  
+  // Return the filtered array containing only numeric elements.
+  return array;
+}
+
+// Example usage:
+// Define an input list with various types of elements.
+let l = [1, 2, 'a', 'b'];
+
+// Log the original list.
+console.log("Original List:", l);
+
+// Call the filter_list function to filter out non-numeric elements.
+let result = filter_list(l);
+
+// Log the result after filtering.
+console.log("Filtered List (Numeric Elements Only):", result);
