@@ -1,0 +1,13 @@
+function isFlush(cards) {
+  // Arrow function to check if the last character of each card is the same as the first card
+  let uniquevalue = (element) => element[element.length - 1] === cards[0][cards[0].length - 1];
+  
+  // Use the every method to check the condition for every card in the array
+  return cards.every(uniquevalue);
+}
+
+// Example usage
+let x = isFlush(["QD", "4D", "10D", "KD", "5D"]);
+
+// Output the result to the console
+console.log(x);
