@@ -1,0 +1,23 @@
+function latestTime(digit1, digit2, digit3, digit4) {
+  // Combine the digits into an array
+  const digits = [digit1, digit2, digit3, digit4];
+
+  // Sort the digits in descending order
+  digits.sort((a, b) => b - a);
+
+  // Check if the first two digits can form a valid hour
+  if (digits[0] <= 2 && (digits[0] !== 2 || digits[1] <= 3)) {
+    // Check if the last two digits can form a valid minute
+    if (digits[2] <= 5) {
+      // Return the formatted time
+      return `${digits[0]}${digits[1]}:${digits[2]}${digits[3]}`;
+    }
+  }
+
+  // If no valid time can be formed, return an error message
+  return "Invalid input, cannot form a valid time.";
+}
+
+// Example usage
+const result = latestTime(1, 9, 6, 4);
+console.log(result); // Output: "19:46"
