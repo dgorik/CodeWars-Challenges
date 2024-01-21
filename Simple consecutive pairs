@@ -1,0 +1,16 @@
+function countConsecutivePairs(array, count = 0) {
+  // Loop through the array with a step of 2 (considering pairs)
+  for (let i = 0; i < array.length; i += 2) {
+    // Check if the absolute difference between consecutive elements is 1
+    if (Math.abs(array[i] - array[i + 1]) === 1) {
+      // Increment the count if the condition is met
+      count += 1;
+    }
+  }
+  // Return the final count of pairs with consecutive numbers
+  return count;
+}
+
+// Example usage:
+const result = countConsecutivePairs([1, 2, 5, 8, -4, -3, 7, 6, 5]);
+console.log(result); // Output: 4
