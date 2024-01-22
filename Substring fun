@@ -1,0 +1,22 @@
+function nthChar(words) {
+  // Initialize an empty string to store the result
+  let answer = "";
+
+  // Iterate over each word in the array
+  words.forEach((element, index) => {
+    // Check if the word has a character at the specified index
+    if (element[index]) {
+      // Concatenate the character to the result string
+      answer += element[index];
+    }
+  });
+
+  // Return the final result
+  return answer;
+}
+
+// Example usage
+const x = nthChar(['yoda', 'best', 'has']);
+
+// Log the result to the console
+console.log(x);
