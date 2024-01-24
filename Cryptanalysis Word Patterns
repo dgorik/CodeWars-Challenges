@@ -1,0 +1,33 @@
+function wordPattern(word) {
+  // Initialize an empty object to keep track of characters and their counts
+  let read = {};
+  
+  // Initialize a count variable to keep track of unique counts
+  let count = 0;
+
+  // Split the input word into an array of characters and map over each character
+  const pattern = word.split('').map(char => {
+    // Convert the character to lowercase for case-insensitivity
+    char = char.toLowerCase();
+
+    // If the character is already in the 'read' object, return its count
+    if (read.hasOwnProperty(char)) {
+      return read[char];
+    }
+
+    // If the character is not in the 'read' object, assign it the current count
+    read[char] = count;
+
+    // Store the current count in a new variable
+    let newCount = count;
+
+    // Increment the count for the next unique character
+    count++;
+
+    // Return the stored count for the current character
+    return newCount;
+  });
+
+  // Join the array of counts into a string using '.' as a separator
+  return pattern.join('.');
+}
