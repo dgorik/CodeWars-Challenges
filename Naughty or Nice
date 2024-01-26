@@ -1,0 +1,29 @@
+function naughtyOrNice(data) {
+  // Initialize counters for Naughty and Nice
+  let nice = 0;
+  let naughty = 0;
+
+  // Iterate through the data object
+  for (const key1 in data) {
+    for (const key2 in data[key1]) {
+      // Check if behavior is Naughty or Nice and update counters
+      if (data[key1][key2] === "Naughty") {
+        naughty++;
+      } else {
+        nice++;
+      }
+    }
+  }
+
+  // Return the result based on the comparison of Naughty and Nice counts
+  return naughty > nice ? "Naughty!" : "Nice!";
+}
+
+// Example usage:
+let x = naughtyOrNice({
+  "January": {"1": "Naughty", "2": "Naughty", "3": "Nice", /* ... */},
+  // ... Other months ...
+  "December": {"1": "Naughty", "2": "Nice", "3": "Naughty", /* ... */}
+});
+
+console.log(x);
