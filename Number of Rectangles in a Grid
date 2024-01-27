@@ -1,0 +1,10 @@
+function numberOfRectangles(m, n) {
+  
+  let answer  = (m*n*(m+1)*(n+1))/4;
+  
+  return answer;
+}
+
+x = numberOfRectangles(4,4);
+
+console.log(x)
