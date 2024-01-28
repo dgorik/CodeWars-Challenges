@@ -1,0 +1,51 @@
+// Function to calculate the number of steps needed to reach from start to finish
+function solution(start, finish) {
+  
+  // Calculate the difference between finish and start
+  let difference = finish - start;
+  
+  // Initialize variables
+  let div = 0;   // Variable to keep track of the current value being checked
+  let count = 0; // Counter variable to track the number of steps
+  
+  // Check if the difference is divisible evenly by 3
+  if (difference % 3 === 0) {
+    // If so, the number of steps is the difference divided by 3
+    count = difference / 3;
+    return count;
+  } else {
+    // If not, iterate through values from 1 to difference
+    for (let i = 1; i <= difference; i++) {
+      // Check if the current value is divisible by 3
+      if (i % 3 === 0) {
+        div = i;    // Set div to the current value
+        count++;    // Increment the counter variable
+      }
+    }
+    
+    // Continue incrementing div until it equals the difference
+    while (div !== difference) {
+      div++;        // Increment div
+      count++;      // Increment the counter variable
+    }
+    
+    // Return the total number of steps
+    return count;
+  }
+}
+
+// Example usage of the solution function
+let x = solution(2, 4);
+
+// Output the result to the console
+console.log(x);
+
+}
+    
+}
+  
+  
+
+let x = solution(2,4)
+
+console.log(x);
