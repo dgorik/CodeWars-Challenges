@@ -1,0 +1,9 @@
+function manhattanDistance(pointA, pointB){
+   let distance = Math.abs(pointA[0] - pointB[0]) + Math.abs(pointA[1] - pointB[1]);
+  
+  return distance;
+}
+
+let x = manhattanDistance([1,1],[0,3]);
+                          
+console.log(x);
