@@ -1,0 +1,14 @@
+function solution(...values) {
+  // Filter out duplicates in the array using indexOf and filter.
+  let duplicates = values.filter((element, index) => values.indexOf(element) !== index);
+
+  // Determine if there are duplicates based on the length of the filtered array.
+  let answer = (duplicates.length !== 0) ? true : false;
+
+  return answer;
+}
+
+// Example usage:
+let x = solution(1, 2, 3, 6, 5, 6);
+
+console.log(x);
