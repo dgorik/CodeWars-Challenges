@@ -1,0 +1,37 @@
+function wordsToMarks(string) {
+  // Define an object representing the position of each letter in the alphabet.
+  const alphabet = {
+    'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
+    'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17,
+    'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25, 'z': 26
+  };
+
+  // Initialize the answer variable to store the sum of letter positions.
+  let answer = 0;
+
+  // Iterate through each character in the input string.
+  for (let i = 0; i < string.length; i++) {
+    // Get the current character.
+    let char = string[i];
+
+    // Iterate through each key (letter) in the alphabet object.
+    for (let key in alphabet) {
+      // Check if the current character matches the current key (letter).
+      if (char === key) {
+        // Add the position of the letter to the answer and break out of the inner loop.
+        answer += alphabet[key];
+        break;
+      }
+    }
+  }
+
+  // Return the final numerical value obtained from the string.
+  return answer;
+}
+
+// Example usage:
+// Convert the word "attitude" to a numerical value and store it in variable x.
+let x = wordsToMarks("attitude");
+
+// Print the result to the console.
+console.log(x);
