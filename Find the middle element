@@ -1,0 +1,16 @@
+function gimme(triplet) {
+  // Create a shallow copy of the original triplet array to avoid modifying it directly
+  let tripletCopy = triplet.slice();
+
+  // Sort the copied array in ascending order
+  let sortedTriplet = tripletCopy.sort((a, b) => a - b);
+
+  // Return the index of the middle element in the original triplet array
+  return triplet.indexOf(sortedTriplet[1]);
+}
+
+// Example usage
+let x = gimme([2, 3, 1]);
+
+// Output the result
+console.log(x);
