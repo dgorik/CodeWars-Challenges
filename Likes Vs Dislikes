@@ -1,0 +1,38 @@
+function likeOrDislike(buttons) {
+  // If the array is empty, the sentiment is "Nothing"
+  if (buttons.length === 0) {
+    return "Nothing";
+  }
+
+  // If there's only one button, return that button's sentiment
+  if (buttons.length === 1) {
+    return buttons[0];
+  }
+
+  // Initialize the answer variable
+  let answer = "";
+
+  // Iterate through the buttons to determine the overall sentiment
+  for (let index = 0; index < buttons.length - 1; index++) {
+    // If the previous sentiment was "Nothing", set the answer to the next button
+    if (answer === "Nothing") {
+      answer = buttons[index + 1];
+    } else {
+      // If the current button is equal to the next button, set the answer to "Nothing"
+      buttons[index] === buttons[index + 1] ? (answer = "Nothing") : (answer = buttons[index + 1]);
+    }
+
+    // If the loop reaches the second-to-last button, exit the loop
+    if (index + 1 === buttons.length - 1) {
+      break;
+    }
+  }
+
+  // Return the overall sentiment
+  return answer;
+}
+
+// Example usage
+let x = likeOrDislike(["Dislike"]);
+
+console.log(x); // Outputs: "Nothing"
