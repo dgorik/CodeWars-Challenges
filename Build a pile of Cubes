@@ -1,0 +1,22 @@
+function findNb(m) {
+    // Initialize the number of cubes and the sum of cubes
+    let n = 1;
+    let sum = 0;
+    
+    // Iterate until the sum of cubes exceeds or equals the desired volume
+    while (sum < m) {
+        // Add the cubes of the current layer to the total sum
+        sum += Math.pow(n, 3);
+        
+        // If the sum matches the desired volume, return the current layer
+        if (sum === m) {
+            return n;
+        }
+        
+        // Move to the next layer
+        n++;
+    }
+    
+    // If it's impossible to build the pyramid with the given volume, return -1
+    return -1;
+}
