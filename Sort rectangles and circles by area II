@@ -1,0 +1,27 @@
+function sortByArea(array) {
+  
+  array.sort((a,b) =>{
+    let areaA = 0;
+    let areaB = 0;
+    if(typeof a === "object"){
+      areaA = a[0] *a[1]
+    }
+    else{
+      areaA = Math.PI * Math.pow(a,2)
+    }
+    if (typeof b === "object") {
+      areaB = b[0] * b[1]; // Assuming the array contains width and height for rectangle
+    } else {
+      areaB = Math.PI * Math.pow(b, 2); // Calculating area of circle
+    }
+    return areaA - areaB;
+  })
+            
+  return array;
+  
+  
+}
+
+let x = sortByArea([ [4.23, 6.43], 1.23, 3.444, [1.342, 3.212] ]);
+
+console.log(x);
