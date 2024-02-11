@@ -1,0 +1,22 @@
+function squares(x, n) {
+    // Initialize an empty array to store the squares
+    let answer = [];
+    
+    // If the number of squares to generate is less than or equal to 0, return an empty array
+    if (n <= 0) {
+        return answer;
+    } else {
+        // Add the initial number to the array
+        answer.push(x);
+        
+        // Generate the remaining squares using a loop
+        for (let i = 0; i < n - 1; i++) {
+            // Calculate the square of the current number and add it to the array
+            x = Math.pow(x, 2);
+            answer.push(x);
+        }
+        
+        // Return the array of squares
+        return answer;
+    }
+}
