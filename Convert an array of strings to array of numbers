@@ -1,0 +1,16 @@
+function toNumberArray(stringArray) {
+  // Use the map method to iterate over each element of the input array
+  // and convert each string element to a floating-point number
+  let answer = stringArray.map(element => {
+    // Use parseFloat to convert the string to a floating-point number
+    return parseFloat(element);
+  });
+  // Return the resulting array of numbers
+  return answer;
+}
+
+// Example usage:
+let x = toNumberArray(["1.1", "2.2", "3.3"]);
+
+// Output the result to the console
+console.log(x);
