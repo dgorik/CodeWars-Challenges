@@ -1,0 +1,26 @@
+function pyramid(n) {
+  // Initialize an empty array to store the pyramid pattern
+  let array = [];
+  
+  // Iterate from 1 to n (inclusive) to generate each level of the pyramid
+  for(let i = 1; i <= n; i++){
+      // Initialize an empty subarray for the current level
+      let subarray = [];
+      // Iterate from 0 to (i - 1) to generate the values for the current level
+      for(let j = 0; j< i; j++ ){
+        // Push 1 into the subarray to form the current row of the pyramid
+        subarray.push(1);
+      }
+      // Push the completed subarray representing the current level into the main array
+      array.push(subarray);
+  }
+  
+  // Return the completed pyramid pattern
+  return array;
+}
+
+// Example usage:
+let x = pyramid(3);
+
+// Output the resulting pyramid pattern to the console
+console.log(x);
