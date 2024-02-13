@@ -1,0 +1,18 @@
+function countCorrectCharacters(correctWord, guess) {
+  // Check if the lengths of correctWord and guess are equal
+  if (correctWord.length !== guess.length) {
+    throw new Error("The lengths of the correct word and guess are not equal.");
+  }
+
+  let count = 0;
+  
+  // Iterate over each character of correctWord and compare with the corresponding character in guess
+  for (let i = 0; i < correctWord.length; i++) {
+    if (correctWord[i] === guess[i]) {
+      count++;
+    }
+  }
+  
+  // Return the count of correctly guessed characters
+  return count;
+}
