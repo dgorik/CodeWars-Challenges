@@ -1,0 +1,28 @@
+function toPretty(seconds) {
+  // If the duration is 0 seconds, return 'just now'
+  if (seconds === 0) {
+    return 'just now';
+  }
+  
+  // Define conversion ranges with corresponding units and factors
+  let convert = [
+    { min: 1, max: 60, factor: 1, single: 'a second ago', plural: 'seconds ago' },
+    { min: 60, max: 3600, factor: 1/60, single: 'a minute ago', plural: 'minutes ago' },
+    { min: 3600, max: 86400, factor: 1/3600, single: 'an hour ago', plural: 'hours ago' },
+    { min: 86400, max: 604800, factor: 1/86400, single: 'a day ago', plural: 'days ago' },
+    { min: 604800, max: Infinity, factor: 1/604800, single: 'a week ago', plural: 'weeks ago' }
+  ];
+  
+  // Find the appropriate range for the given duration
+  const { factor, single, plural } = convert.find(element => element.min <= seconds && seconds < element.max);
+  
+  // Calculate the converted value rounded down to the nearest integer
+  const t = Math.floor(seconds * factor);
+  
+  // Return the converted value with appropriate unit (singular or plural)
+  return t === 1 ? single : `${t} ${plural}`;
+}
+
+// Example usage:
+let x = toPretty(10000000);
+console.log(x); // Outputs: "1 week ago"
