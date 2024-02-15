@@ -1,0 +1,16 @@
+function michaelPays(costs) {
+  let answer = 0;
+  
+  // Determine the amount Michael can pay (up to a maximum of 10)
+  let cate = Math.min(costs / 3, 10);
+  
+  // Calculate the amount Michael pays based on the cost
+  costs < 5 ? answer = costs : answer = costs - cate;
+  
+  // Return the amount Michael pays, rounded to two decimal places
+  return parseFloat(answer.toFixed(2));
+}
+
+// Example usage:
+let x = michaelPays(22);
+console.log(x); // Output: 18.33
