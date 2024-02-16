@@ -1,0 +1,21 @@
+function flipNumber(n) {
+  // Convert the input string or number to an array of characters or digits
+  n = Array.from(n);
+  
+  let count = n.length; // Get the length of the array
+  
+  let answer = ''; // Initialize an empty string to store the reversed result
+  
+  // Repeat the reversal process until all characters or digits are processed
+  while (count > 0) {
+    // Reverse the order of elements in the array
+    n.reverse();
+  
+    // Remove and append the first element of the reversed array to the answer string
+    answer += n.shift();
+    
+    count--; // Decrement the count of remaining characters or digits
+  }
+  
+  return answer; // Return the reversed string or number
+}
