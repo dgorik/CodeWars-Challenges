@@ -1,0 +1,16 @@
+var splitInParts = function(s, partLength) {
+    let answer = "";
+    for (let i = 0; i < s.length; i += partLength) {
+        // Get the substring of length partLength starting from index i
+        answer += s.substring(i, i + partLength);
+        // Add a space if it's not the last part
+        if (i + partLength < s.length) {
+            answer += " ";
+        }
+    }
+    return answer;
+}
+
+// Example usage
+let x = splitInParts("supercalifragilisticexpialidocious", 3);
+console.log(x); // Output: "sup erc ali fra gil ist ice xpi ali doc iou s"
