@@ -13,3 +13,26 @@ function repeats(arr) {
 // Example usage
 let x = repeats([4, 5, 7, 5, 4, 8]);
 console.log(x); // Output: 15 (4 + 7 + 8)
+
+
+/////Second solution/////
+
+function repeats(arr) {
+    function noduplicates(element) {
+        if (arr.indexOf(element) === arr.lastIndexOf(element)) {
+            return element;
+        }
+    }
+    
+    // Filter out elements that occur more than once
+    let filteredarray = arr.filter(noduplicates);
+    
+    // Calculate the sum of filtered elements
+    let answer = filteredarray.reduce((acc, element) => acc + element, 0);
+    
+    return answer;
+}
+
+// Example usage
+let x = repeats([4, 5, 7, 5, 4, 8]);
+console.log(x); // Output: 15 (4 + 7 + 8)
