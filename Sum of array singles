@@ -1,0 +1,15 @@
+function repeats(arr) {
+    let answer = 0;
+    arr.forEach((element, index) => {
+        // Check if the element occurs only once in the array
+        if (arr.indexOf(element) === arr.lastIndexOf(element)) {
+            // Add the element to the answer
+            answer += arr[index];
+        }
+    });
+    return answer;
+}
+
+// Example usage
+let x = repeats([4, 5, 7, 5, 4, 8]);
+console.log(x); // Output: 15 (4 + 7 + 8)
