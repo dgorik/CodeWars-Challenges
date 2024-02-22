@@ -1,0 +1,22 @@
+function openOrSenior(data){
+  // Initialize an empty array to store the results
+  let answer = [];
+  
+  // Iterate through each member in the input array
+  data.forEach((element) => {
+    // Check if the member is "Senior" based on the conditions
+    if (element[0] >= 55 && element[1] > 7) {
+      // If the conditions are met, push "Senior" to the answer array
+      answer.push("Senior");
+    } else {
+      // If the conditions are not met, push "Open" to the answer array
+      answer.push("Open");
+    }
+  });
+  
+  // Return the array containing the status of each member
+  return answer;
+}
+
+// Example usage:
+let x = openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]);
