@@ -1,0 +1,40 @@
+function cleverSplit(s) {
+    let answer = [];
+    let substring = "";
+
+    // Loop through each character of the input string
+    for (let i = 0; i < s.length; i++) {
+        // If the current character is a space, push the accumulated substring to the answer array and reset the substring
+        if (s[i] === " ") {
+            answer.push(substring);
+            substring = "";
+        } else {
+            // If the current character is '[', find the substring enclosed within square brackets and push it to the answer array
+            if (s[i] === "[") {
+                let empty = "";
+                let j = i;
+                while (s[j] != "]") {
+                    empty += s[j];
+                    j++;
+                }
+                empty += "]";
+                answer.push(empty);
+                i = j + 1; // Update the loop index to skip the processed substring
+            } else {
+                // Otherwise, append the current character to the substring
+                substring += s[i];
+            }
+        }
+
+        // Check if we are at the end of the string and push the last substring if it's not empty
+        if (i === s.length - 1 && substring !== "") {
+            answer.push(substring);
+        }
+    }
+
+    // Filter out empty strings and return the answer array
+    return answer.filter(Boolean);
+}
+
+let x = cleverSplit('Buy a !car [!red green !white] [cheap or !new]');
+console.log(x);
