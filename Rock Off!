@@ -1,0 +1,24 @@
+function solve(a, b) {
+    // Initialize scores for Alice and Bob
+    let alicescore = 0;
+    let bobscore = 0;
+
+    // Iterate through each score in the arrays
+    for (let i = 0; i < 3; i++) {
+        // Compare scores at the same index and increment respective scores
+        if (a[i] !== b[i]) {
+            a[i] > b[i] ? alicescore += 1 : bobscore += 1;
+        }
+    }
+
+    // Determine the winner and construct the result message
+    if (alicescore === bobscore) {
+        return `${alicescore}, ${bobscore}: that looks like a "draw"! Rock on!`;
+    } else {
+        return alicescore > bobscore ? `${alicescore}, ${bobscore}: Alice made "Kurt" proud!` : `${alicescore}, ${bobscore}: Bob made "Jeff" proud!`;
+    }
+}
+
+// Example usage
+let x = solve([47, 7, 2], [47, 7, 2]);
+console.log(x); // Output the result message
