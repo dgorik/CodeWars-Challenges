@@ -1,0 +1,28 @@
+function removeSmallest(numbers) {
+  // Initialize an empty array to store the filtered numbers.
+  let answer = [];
+  // Find the minimum number in the array.
+  let minNumber = Math.min(...numbers);
+  // Initialize a boolean variable to track whether the smallest number has been found.
+  let found = false;
+  
+  // Check if the input array is empty.
+  return numbers.length === 0 ? answer : (
+    // Filter the array to remove the first occurrence of the smallest number.
+    answer = numbers.filter((element, index, array) => {
+      // If the smallest number hasn't been found and the current element is the smallest number,
+      if (!found && element === minNumber) {
+        // Set found to true to indicate that the smallest number has been found.
+        found = true;
+        // Return false to filter out the current element.
+        return false;
+      }
+      // Otherwise, return true to include the current element in the filtered array.
+      return true;
+    })
+  );
+}
+
+// Example usage:
+let x = removeSmallest([1, 2, 3, 4, 5]);
+console.log(x); // Output: [2, 3, 4, 5]
