@@ -1,0 +1,9 @@
+function findShort(s) {
+  // Split the string into an array of words, and then map each word to its length.
+  let wordLengths = s.split(" ").map((element) => {
+    return element.length;
+  });
+
+  // Return the minimum length among all the words.
+  return Math.min(...wordLengths);
+}
