@@ -1,0 +1,15 @@
+function getSectionIdFromScroll(scrollY, sizes) {
+    let answer = -1; // Default value for the section index
+    sizes.reduce((acc, element, index) => {
+        acc += element; // Update the accumulator with the size of the current section
+        if (scrollY < acc && answer === -1) { // Check if scroll position is within the current section and answer is not yet found
+            answer = index; // Update the section index
+        }
+        return acc; // Return the accumulator for the next iteration
+    }, 0); // Start with an initial accumulator value of 0
+    return answer; // Return the section index based on scroll position
+}
+
+// Example usage:
+let x = getSectionIdFromScroll(299, [300, 200, 400, 600, 100]);
+console.log(x); // Output the section index
