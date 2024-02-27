@@ -1,0 +1,27 @@
+function isDivisible(...n){
+  let answer = true;
+  
+  // Iterate through each number in the list
+  [...n].forEach((element) => {
+    // If the first number is not divisible by any other number, set the answer to false
+    if([...n][0] % element !== 0){
+      answer = false;
+    }
+  })
+  
+  return answer;
+}
+
+let x = isDivisible(3,3,4)
+
+console.log(x)
+
+///-------------------Second Version-----------------------------------///
+
+function isDivisible(...n){
+  
+  return [...n].every((element) => {return [...n][0] % element === 0})
+  
+}
+
+let x = isDivisible(3,3,4)
