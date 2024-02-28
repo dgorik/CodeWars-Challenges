@@ -1,0 +1,14 @@
+function reverseNumber(n) {
+  // Store the reversed number as a string
+  let answer = "";
+  // Extract the sign of the number (-1 for negative, 1 for positive, 0 if number is 0)
+  let sign = Math.sign(n);
+  // Reverse the absolute value of the number
+  answer = parseInt(String(Math.abs(n)).split('').reverse().join(''));
+  // Apply the sign to the reversed absolute value
+  return sign * answer;
+}
+
+let x = reverseNumber(-123);
+
+console.log(x); // Output: -321
