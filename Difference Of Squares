@@ -1,12 +1,15 @@
 function differenceOfSquares(n){
+    // Create an array containing numbers from 1 to n
+    let array = Array.from({length: n}, (_, index) => index + 1);
   
-
+    // Calculate the square of the sum of numbers from 1 to n
+    let squareOfSum = Math.pow(array.reduce((acc,element) => acc + element, 0), 2);
   
-  return Math.pow(Array.from(String(n), Number).reduce((acc,element) => acc + element,0),2) - Array.from(String(n),Number).reduce((acc,element) => acc + Math.pow(element,2),0)
+    // Calculate the sum of squares of numbers from 1 to n
+    let sumOfSquares = array.reduce((acc,element) => acc + Math.pow(element,2), 0);
   
-
+    // Calculate the difference between the square of the sum and the sum of squares
+    let difference = squareOfSum - sumOfSquares;
+  
+    return difference;
 }
-
-let x = differenceOfSquares(10);
-
-console.log(x)
