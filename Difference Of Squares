@@ -1,0 +1,12 @@
+function differenceOfSquares(n){
+  
+
+  
+  return Math.pow(Array.from(String(n), Number).reduce((acc,element) => acc + element,0),2) - Array.from(String(n),Number).reduce((acc,element) => acc + Math.pow(element,2),0)
+  
+
+}
+
+let x = differenceOfSquares(10);
+
+console.log(x)
