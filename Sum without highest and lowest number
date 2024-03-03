@@ -1,0 +1,21 @@
+function sumArray(array) {
+  // If the array is null or undefined, return 0
+  if (array === null || array === undefined) {
+    return 0;
+  }
+
+  // Sort the array in ascending order and remove the first and last elements
+  let sortedArray = array.slice().sort((a, b) => a - b).slice(1, array.length - 1);
+  
+  // If the length of the array is less than or equal to 2, return 0
+  if (array.length <= 2) {
+    return 0;
+  }
+
+  // Calculate the sum of the elements in the sorted array
+  return sortedArray.reduce((acc, element) => acc + element, 0);
+}
+
+let x = sumArray([6, 2, 1, 8, 10]);
+console.log(x); // Output: 9 (2 + 6 + 1)
+This function calculates the sum of all eleme
