@@ -1,0 +1,28 @@
+function bubble(arr) {
+  let answer = [];
+  
+  // Track the last swapped index
+  let lastSwappedIndex = arr.length - 1;
+  
+  // Compare if arr is not sorted
+  while (lastSwappedIndex > 0) {
+    let newLastSwappedIndex = 0;
+    
+    for (let i = 0; i < lastSwappedIndex; i++) {
+      if (arr[i] > arr[i + 1]) {
+        // Swap elements
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+        newLastSwappedIndex = i; // Update the last swapped index
+        answer.push([...arr]); // Add a copy of the current array to the answer
+      }
+    }
+    
+    lastSwappedIndex = newLastSwappedIndex; // Update the last swapped index
+  }
+
+  return answer;
+}
+
+// Example usage:
+let x = bubble([1, 4, 3, 6, 7, 9, 2, 5, 8]);
+console.log(x);
