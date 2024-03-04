@@ -1,0 +1,22 @@
+function actuallyReallyGood(foods) {
+  // Check if the foods array is empty
+  if (foods.length === 0) {
+    return "You know what's actually really good? Nothing!";
+  }
+
+  // Generate a random index to select a food item from the list
+  const randomIndex = Math.floor(Math.random() * foods.length);
+
+  // Select a random food item and capitalize the first letter
+  const first = foods[randomIndex][0].toUpperCase() + foods[randomIndex].slice(1).toLowerCase();
+
+  // Select another random food item
+  const second = foods[Math.floor(Math.random() * foods.length)].toLowerCase();
+
+  // Construct the final phrase
+  return `You know what's actually really good? ${first} and more ${second}.`;
+}
+
+// Example usage
+let x = actuallyReallyGood(['Peanut butter']);
+console.log(x); // Output: "You know what's actually really good? Peanut butter and more peanut butter."
