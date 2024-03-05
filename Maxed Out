@@ -1,0 +1,12 @@
+function maxedOut(arr) {
+    let answer = 0;
+    
+    // Calculate the sum of the cubes of the elements in the array
+    answer = arr.map(element => Math.pow(element, 3)).reduce((acc, element) => acc + element, 0);
+    
+    // Check if the sum exceeds the maximum safe integer
+    return answer <= Number.MAX_SAFE_INTEGER ?  answer : "You've pushed me to the max!";
+}
+
+let x = maxedOut([-530, 230, 5600, 40, 5, 7200]);
+console.log(x);
