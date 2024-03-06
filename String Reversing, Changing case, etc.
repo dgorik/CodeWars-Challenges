@@ -1,0 +1,20 @@
+function reverseAndMirror(s1, s2) {
+  // Reverse and mirror characters in s2
+  s2 = s2.split("").reverse().map((element) => {
+    // If character is lowercase, convert to uppercase; otherwise, convert to lowercase
+    return element === element.toLowerCase() ? element.toUpperCase() : element.toLowerCase();
+  }).join('');
+
+  // Reverse and mirror characters in s1
+  s1 = s1.split("").reverse().map((element) => {
+    // If character is lowercase, convert to uppercase; otherwise, convert to lowercase
+    return element === element.toLowerCase() ? element.toUpperCase() : element.toLowerCase();
+  }).join('');
+
+  // Concatenate reversed and mirrored s2, delimiter '@@@', and reversed s1
+  return s2.concat('@@@', s1, s1.split('').reverse().join(''));
+}
+
+// Example usage
+let x = reverseAndMirror("FizZ", "buZZ");
+console.log(x);
