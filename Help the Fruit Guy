@@ -1,0 +1,25 @@
+/**
+ * Removes the word "rotten" from any fruit names containing it in the bagOfFruits array
+ * and converts the remaining fruit names to lowercase.
+ * 
+ * @param {string[]} bagOfFruits - An array containing the names of fruits.
+ * @returns {string[]} An array with the word "rotten" removed from fruit names containing it,
+ * and all fruit names converted to lowercase.
+ */
+function removeRotten(bagOfFruits) {
+  // Check if bagOfFruits is not null and has at least one element
+  if (bagOfFruits && bagOfFruits.length >= 1) {
+    // Map over each element in the bagOfFruits array
+    return bagOfFruits.map((element) => {
+      // If the element contains the word "rotten", remove it and convert to lowercase
+      return element.includes("rotten") ? element.replace(/rotten/i, '').toLowerCase() : element;
+    });
+  } else {
+    // Return an empty array if bagOfFruits is null or empty
+    return [];
+  }
+}
+
+// Example usage
+let x = removeRotten(["apple", "rottenBanana", "kiwi", "melone", "orange"]);
+console.log(x);
