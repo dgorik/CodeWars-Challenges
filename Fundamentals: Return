@@ -1,0 +1,39 @@
+/**
+ * Multiply two numbers.
+ * @param {number} a - The first number to multiply.
+ * @param {number} b - The second number to multiply.
+ * @returns {number} The result of multiplying `a` by `b`.
+ */
+function multiply(a, b) {
+    return a * b;
+}
+
+/**
+ * Calculate the remainder of dividing two numbers.
+ * @param {number} a - The dividend.
+ * @param {number} b - The divisor.
+ * @returns {number} The remainder of dividing `a` by `b`.
+ */
+function mod(a, b) {
+    return a % b;
+}
+
+/**
+ * Calculate the exponentiation of a number.
+ * @param {number} a - The base number.
+ * @param {number} b - The exponent.
+ * @returns {number} The result of raising `a` to the power of `b`.
+ */
+function exponent(a, b) {
+    return Math.pow(a, b);
+}
+
+/**
+ * Subtract two numbers.
+ * @param {number} a - The number to subtract from.
+ * @param {number} b - The number to subtract.
+ * @returns {number} The result of subtracting `b` from `a`.
+ */
+function subt(a, b) {
+    return a - b;
+}
