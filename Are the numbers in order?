@@ -1,0 +1,25 @@
+/**
+ * Check if an array is in ascending order.
+ * @param {number[]} arr - The input array to be checked.
+ * @returns {boolean} - Returns true if the array is in ascending order, otherwise false.
+ */
+function inAscOrder(arr) {
+    // Initialize the answer to true
+    let answer = true;
+    
+    // Iterate through the array
+    for (let i = 0; i < arr.length - 1; i++) {
+        // If any element is greater than the next one, set answer to false and break out of the loop
+        if (arr[i] > arr[i + 1]) {
+            answer = false;
+            break;
+        }
+    }
+    
+    // Return the answer
+    return answer;
+}
+
+// Example usage
+let x = inAscOrder([9, 8, 7, 6, 5, 4, 3, 2, 1]);
+console.log(x); // Output: false
