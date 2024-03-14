@@ -1,0 +1,19 @@
+/**
+ * Filters out elements from the array that occur an odd number of times.
+ * @param {Array} nums - The array to filter.
+ * @returns {Array} - A new array containing elements occurring an even number of times.
+ */
+function oddOnesOut(nums) {
+  // Use the filter method to create a new array
+  return nums.filter((element, index) => {
+    let count = 0;
+    // Loop through the array to count occurrences of the current element
+    for (let i = 0; i < nums.length; i++) {
+      if (element === nums[i]) {
+        count++;
+      }
+    }
+    // Return true (to include the element) if its occurrence count is even
+    return count % 2 === 0;
+  });
+}
