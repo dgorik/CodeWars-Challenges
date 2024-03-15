@@ -1,0 +1,33 @@
+/**
+ * Sorts an array of numbers in ascending order using the selection sort algorithm.
+ * @param {number[]} items - The array of numbers to be sorted.
+ * @returns {number[]} - The sorted array.
+ */
+function sort(items) {
+  let answer = [];
+  let length = items.length;
+  
+  // Repeat until all elements are sorted
+  while (items.length > 0) {
+    let minIndex = 0;
+
+    // Find the index of the minimum element in the unsorted part of the array
+    for (let i = 1; i < items.length; i++) {
+      if (items[i] < items[minIndex]) {
+        minIndex = i;
+      }
+    }
+
+    // Push the minimum element to the sorted array
+    answer.push(items[minIndex]);
+
+    // Remove the minimum element from the original array
+    items.splice(minIndex, 1);
+  }
+  
+  return answer;
+}
+
+// Example usage
+let x = sort([1, 2, 3]);
+console.log(x); // Output: [1, 2, 3]
