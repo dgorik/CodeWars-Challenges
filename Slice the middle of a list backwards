@@ -1,0 +1,9 @@
+function reverseMiddle(array) {
+  let answer = 0
+	return array.length%2 === 0? array.slice(array.length/2 - 1, array.length/2 + 1).reverse():array.slice((array.length - 1)/2 - 1, (array.length - 1)/2 + 2).reverse() 
+  
+}
+
+let x =  reverseMiddle([1, 2, 3, 4])
+
+console.log(x)
