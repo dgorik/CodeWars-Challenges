@@ -1,0 +1,11 @@
+const sharePrice = (invested, changes) => {
+  let answer = invested;
+  changes.forEach((element) => {
+    answer = answer * (1 + element / 100);
+  });
+  return answer.toFixed(2);
+};
+
+// Example usage:
+const x = sharePrice(100, [-50, 50]);
+console.log(x); // Output: "75.00"
