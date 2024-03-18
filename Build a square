@@ -1,0 +1,17 @@
+/**
+ * Generates a string representing a square shape made of "+" characters.
+ * @param {number} integer - The size of the square (number of rows and columns).
+ * @returns {string} - A string representing the generated square shape.
+ */
+function generateShape(integer) {
+  let x = ""; // Initialize an empty string to store the generated shape
+  for (let i = 0; i < integer; i++) { // Iterate over each row
+    // Add a row of "+" characters to the string
+    i < integer - 1 ? x += (Array.from({ length: integer }, (_, index) => "+").join('')) + "\n" : x += (Array.from({ length: integer }, (_, index) => "+").join(''));
+  }
+  return x; // Return the generated shape string
+}
+
+// Example usage:
+let x = generateShape(8); // Generate a shape with 8 rows and columns
+console.log(x); // Output the generated shape string
