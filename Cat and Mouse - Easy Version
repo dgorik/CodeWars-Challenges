@@ -1,0 +1,14 @@
+/**
+ * Determines if the mouse has been caught by the cat within a given distance.
+ * @param {string} x - A string representing the path with 'C' indicating the position of the cat and 'm' indicating the position of the mouse.
+ * @returns {string} - Returns 'Caught!' if the mouse is within 3 characters of the cat, otherwise returns 'Escaped!'.
+ */
+function catMouse(x){
+  // Split the path into an array of characters, find the indices of 'C' and 'm', then extract the substring between them.
+  // Check if the length of the substring is less than or equal to 3 characters away from the cat.
+  return x.split('').slice(x.indexOf('C') + 1, x.indexOf('m')).join('').length <= 3 ? 'Caught!' : 'Escaped!';
+}
+
+let x = catMouse('C..m');
+
+console.log(x); // Output: 'Caught!' or 'Escaped!'
