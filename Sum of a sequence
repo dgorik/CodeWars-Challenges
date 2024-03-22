@@ -1,0 +1,20 @@
+/**
+ * Calculates the sum of an arithmetic sequence.
+ * @param {number} begin - The starting value of the sequence.
+ * @param {number} end - The ending value of the sequence (inclusive).
+ * @param {number} step - The step or common difference between consecutive elements.
+ * @returns {number} - The sum of the arithmetic sequence.
+ */
+const sequenceSum = (begin, end, step) => {
+  // Generate the sequence as an array
+  const sequence = Array.from({ length: Math.floor((end - begin) / step) + 1 }, (_, index) => begin + index * step);
+  
+  // Calculate the sum of the sequence using reduce
+  const sum = sequence.reduce((acc, element) => acc + element, 0);
+  
+  return sum;
+}
+
+// Example usage
+let x = sequenceSum(2, 6, 2);
+console.log(x); // Output: 12
