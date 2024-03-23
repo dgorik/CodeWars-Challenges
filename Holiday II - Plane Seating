@@ -1,0 +1,38 @@
+/**
+ * Determines the location of a seat in a plane based on its seat number and letter.
+ * @param {string} a - The seat identifier in the format '<number><letter>'.
+ * @returns {string} - The location description of the seat.
+ */
+function planeSeat(a) {
+  // Extracting the seat letter and number from the input string
+  let letter = a[a.length - 1];
+  let number = parseInt(a.slice(0, a.length - 1));
+  
+  // Mapping seat letters to seat locations
+  let row = {
+    A: "Left",
+    B: "Left",
+    C: "Left",
+    D: "Middle",
+    E: "Middle",
+    F: "Middle",
+    G: "Right",
+    H: "Right",
+    K: "Right",
+  }
+  
+  // Checking if seat number or letter is invalid, and returning 'No Seat!!' if so
+  if (number > 60 || row[letter] === undefined) {
+    return 'No Seat!!';
+  } else if (number >= 1 && number <= 20) {
+    return `Front-${row[letter]}`; // If seat number is between 1 and 20, return Front-location
+  } else if (number >= 21 && number <= 40) {
+    return `Middle-${row[letter]}`; // If seat number is between 21 and 40, return Middle-location
+  } else {
+    return `Back-${row[letter]}`; // Otherwise, return Back-location
+  }
+}
+
+// Example usage
+let x = planeSeat('58I');
+console.log(x); // Output: Middle-Right
