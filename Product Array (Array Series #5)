@@ -1,0 +1,20 @@
+/**
+ * Calculates the product of each element in an array excluding the current element.
+ * @param {number[]} numbers - An array of numbers.
+ * @returns {number[]} - An array where each element is the product of all elements in the input array except the current element.
+ */
+function productArray(numbers){
+  return numbers.map((element, index, array) => {
+    let acc = 1;
+    for(let i = 0; i < numbers.length; i++){
+      if(i !== index){
+        acc *= numbers[i];
+      }
+    }
+    return acc;
+  });
+}
+
+// Example usage
+let x = productArray([13, 10, 5, 2, 9]);
+console.log(x); // Output: [900, 1170, 2340, 5850, 1300]
