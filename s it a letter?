@@ -1,0 +1,12 @@
+/**
+ * Checks if a character is a letter (case-insensitive) or not.
+ * @param {string} character - The character to be checked.
+ * @returns {boolean} - True if the character is a letter, false otherwise.
+ */
+function isItLetter(character) {
+  return character.match(/[a-z]/i) === null ? false : isNaN(character) ? true : false;
+}
+
+// Example usage
+let x = isItLetter('b');
+console.log(x); // Output: true
