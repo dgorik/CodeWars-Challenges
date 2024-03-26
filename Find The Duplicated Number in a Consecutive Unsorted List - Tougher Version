@@ -1,0 +1,17 @@
+function findDup(array) {
+    const seen = {}; // Create an empty object to store seen elements
+
+    for (const element of array) {
+        if (seen[element]) {
+            return element; // If the element is already seen, it's a duplicate
+        } else {
+            seen[element] = true; // Mark the element as seen
+        }
+    }
+    
+    return null; // Return null if no duplicates are found
+}
+
+let x = findDup([5, 4, 3, 2, 1, 1]);
+
+console.log(x); // Output: 1
