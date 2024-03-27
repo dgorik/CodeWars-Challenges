@@ -1,0 +1,14 @@
+function sortMyString(S) {
+  // Initialize empty strings to hold characters at even and odd indices
+  let first = "";
+  let second = "";
+
+  // Iterate through each character of the input string
+  for (let i = 0; i < S.length; i++) {
+    // Append characters to 'first' if the index is even, otherwise append to 'second'
+    i % 2 === 0 ? (first += S[i]) : (second += S[i]);
+  }
+
+  // Concatenate the characters at even and odd indices with a space in between and return
+  return first + " " + second;
+}
