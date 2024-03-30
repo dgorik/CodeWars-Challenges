@@ -1,0 +1,28 @@
+/**
+ * Calculates the remaining minutes until midnight based on the provided time.
+ * @param {...number} d - The components of the time (hours, minutes, seconds, milliseconds).
+ * @returns {string} A formatted string indicating the remaining time until midnight.
+ */
+function minutesToMidnight(...d) {
+  // Calculate total minutes in a day (24 hours * 60 minutes per hour)
+  const midnight = 24 * 60;
+  
+  // Create a Date object representing the provided time
+  const timeObject = [new Date(d)];
+  
+  // Extract the Date object from the array
+  const dateObject = timeObject[0];
+    
+  // Calculate the total minutes elapsed since midnight
+  const minutes = Math.round(dateObject.getMinutes() + dateObject.getHours() * 60 +  dateObject.getSeconds() / 60);
+  
+  // Calculate minutes remaining until midnight
+  const minutesRemaining = midnight - minutes;
+  
+  // Return formatted string indicating remaining time until midnight
+  return `${minutesRemaining} minute${minutesRemaining !== 1 ? 's' : ''}`;
+}
+
+// Example usage:
+let x = minutesToMidnight(10, 54, 0, 0);
+console.log(x); // Output: 655 minutes
