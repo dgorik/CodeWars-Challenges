@@ -1,0 +1,9 @@
+function matrix(array) {
+    let answer = array.slice();
+    for( i = 0; i < array.length; i++){
+      for( j = i; j < i + 1; j++){
+       array[i][j] <0? answer[i].splice(j,1,0): answer[i].splice(j,1,1);
+      }
+    }
+  return answer;
+}
