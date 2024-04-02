@@ -1,0 +1,17 @@
+function calculateSpeed(distance, time) {
+  if (distance.endsWith("m")) {
+    // Convert distance from meters to kilometers
+    distance = parseFloat(distance) / 1000;
+  } else {
+    distance = parseFloat(distance);
+  }
+  
+  // Convert time from seconds to hours
+  time = parseFloat(time) / 3600;
+
+  // Calculate speed in miles per hour (mph)
+  return Math.round((distance / time / 1.60934)).toString() + "mph";
+
+}
+
+let x = calculateSpeed("100m", "10s")
