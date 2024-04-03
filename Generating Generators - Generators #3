@@ -1,0 +1,14 @@
+function* generator(a) {
+  // Loop indefinitely to generate multiplication results
+  for (let b = 1; ; b++) {
+    // Calculate the multiplication
+    let multiplication = a * b;
+    // Yield the multiplication result as a string
+    yield `${a} x ${b} = ${multiplication}`;
+  }
+}
+// Create a generator for number 1
+let gen = generator(1);
+
+// Print the first multiplication result
+console.log(gen.next().value); // Output: "1 x 1 = 1"
