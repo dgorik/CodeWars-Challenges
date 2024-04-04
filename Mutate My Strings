@@ -1,0 +1,15 @@
+function mutateMyStrings(stringOne, stringTwo){
+  let answer = [stringOne]
+ for( i = 0; i < stringTwo.length; i++) {
+   if(stringOne[i] !== stringTwo[i] ){
+      let mutatedstring = stringOne.slice(0, i) + stringTwo[i] + stringOne.slice(i + 1) 
+      stringOne = mutatedstring
+      answer.push(mutatedstring);
+   }
+  }
+  return answer.map((element) => {return element + "\n"}).join('');
+}
+
+let x = mutateMyStrings('bubble gum', 'turtle ham')
+
+console.log(x)
