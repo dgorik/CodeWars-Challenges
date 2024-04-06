@@ -1,0 +1,37 @@
+class PowerArray extends Array {
+  constructor(...numbers) {
+    super(...numbers);
+  }
+  
+  square(){
+    return this.map((element) => Math.pow(element,2))
+  }
+  
+  cube(){
+    return this.map((element) => Math.pow(element,3))
+  }
+  
+  average(){
+    if(this.length === 0){
+      return NaN
+    }
+    return this.reduce((acc,element) => acc + element,0)/this.length
+  }
+  
+  sum(){
+    return this.reduce((acc, element) => acc + element,0)
+  }
+  
+  even(){
+    return this.filter(element => element % 2 === 0)
+  }
+  
+  odd(){
+    return this.filter(element => element % 2 !== 0)
+  }
+  
+}
+
+const x = new PowerArray(1, 2, 3, 4, 5);
+
+console.log(x.cube());
