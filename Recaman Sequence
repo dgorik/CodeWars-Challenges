@@ -1,0 +1,25 @@
+function recaman(n) {
+    let sequence = [0];
+    let visited = new Set();
+    visited.add(0);
+
+    for (let i = 1; i <= n; i++) {
+      
+        let prevTerm = sequence[i - 1];
+        let nextTerm = prevTerm - i;
+
+        if (nextTerm < 0 || visited.has(nextTerm)) {
+            nextTerm = prevTerm + i;
+        }
+
+        sequence.push(nextTerm);
+        visited.add(nextTerm);
+      
+    }
+
+    return sequence[sequence.length - 1];
+}
+
+let x = recaman(2)
+
+console.log(x)
