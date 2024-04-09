@@ -1,0 +1,16 @@
+function titleToNumber(title) {
+    let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    let answer = 0;
+  
+    
+    let multiplier = 1;
+    for( let i = title.length - 1; i >= 0; i --){
+      answer += (alphabet.indexOf(title[i]) + 1) * multiplier
+      multiplier *= 26;
+    }
+    
+    return answer
+
+}
+
+let x = titleToNumber('AA')
