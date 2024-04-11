@@ -1,0 +1,19 @@
+function isAllPossibilities(x) {
+  // Create an array containing numbers from 0 to x.length - 1
+  let array = Array.from({ length: x.length }, (_, index) => index);
+  
+  // Loop through each number in the array
+  for (let i = 0; i < x.length; i++) {
+    // If the current number is not included in the array x, return false
+    if (!x.includes(array[i])) {
+      return false;
+    }
+  }
+  
+  // If all numbers from 0 to x.length - 1 are included in x, return true
+  return true;
+}
+
+// Example usage:
+let x = isAllPossibilities([6, 2, 4, 2, 2, 2, 1, 5, 0, 0]);
+console.log(x); // Output: false
