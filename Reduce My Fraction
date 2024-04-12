@@ -1,0 +1,13 @@
+function reduce(fraction) {
+  let answer = []
+  for( let i = 1; i <= Math.min(fraction[0], fraction[1]); i++){
+    let mod1 = fraction[0] % i 
+    let mod2 = fraction[1] % i 
+    if(mod1 === 0 && mod2 === 0){
+       answer.push(i)
+    }
+  }
+  return fraction.map((element) => element / Math.max(...answer))
+}
+
+let x = reduce([60, 20])
