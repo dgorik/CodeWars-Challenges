@@ -1,0 +1,9 @@
+function add(arr) {
+  return arr.map((element, index, array) => {
+     return array.slice(0,index + 1).reduce((acc,element) => acc + element,0)
+  })
+}
+
+let x = add([1, 2, 3, 4, 5])
+
+console.log(x)
