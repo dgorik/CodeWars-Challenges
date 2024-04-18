@@ -1,0 +1,18 @@
+function sortString(s){
+  const englishCharacters = s.match(/[a-zA-Z]/g) || []; 
+    const nonEnglishCharacters = s.match(/[^a-zA-Z\s]/g) || []; 
+    const sortedEnglish = englishCharacters.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+    let sortedIndex = 0;
+    let result = '';
+    
+    
+    for (let i = 0; i < s.length; i++) {
+        if (/[a-zA-Z]/.test(s[i])) {
+            result += sortedEnglish[sortedIndex++];
+        } else {
+            result += s[i];
+        }
+    }
+    
+    return result;
+}
