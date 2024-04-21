@@ -1,0 +1,8 @@
+function sentencify(arr) {
+    let capitalizedFirstWord = arr[0].charAt(0).toUpperCase() + arr[0].slice(1);
+    let answer = arr.fill(capitalizedFirstWord, 0, 1).join(' ') + ".";
+    return answer 
+  
+}
+
+let x = sentencify(["i", "am", "an", "AI"]) 
