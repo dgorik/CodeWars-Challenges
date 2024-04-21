@@ -1,0 +1,6 @@
+function moveZeros(arr) {
+  let nonzero = arr.filter(n => n !== 0)
+  let zero = arr.filter(n => n === 0)
+  
+  return nonzero.concat(zero)
+}
