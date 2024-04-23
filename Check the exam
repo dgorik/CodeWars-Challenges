@@ -1,0 +1,12 @@
+function checkExam(array1, array2) {
+    let score = 0;
+    // Iterate over each element of array2 (student's answers)
+    array2.forEach((element, index) => {
+        // Compare student's answer with correct answer at the same index
+        // Update score based on correctness of the answer
+        return element === "" ? score : (element === array1[index] ? score += 4 : score -= 1);
+    });
+  
+    // Return the final score, ensuring it's not negative
+    return score >= 0 ? score : 0;
+}
