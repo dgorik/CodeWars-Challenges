@@ -1,0 +1,3 @@
+function countWins(winnerList, country) {
+  return winnerList.reduce((a,b) => a + (b.country === country ? 1:0),0)
+}
