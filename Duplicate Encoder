@@ -1,0 +1,19 @@
+function duplicateEncode(word) {
+  // Convert the word to lowercase to ensure case insensitivity
+  word = word.toLowerCase();
+  
+  let array = [];
+  
+  // Loop through each character of the word
+  for (let i = 0; i < word.length; i++) {
+    // Count the occurrences of the current character in the word
+    array.push(word.split(`${word[i]}`).length - 1);
+  }
+  
+  // Map the counts array to the encoded characters
+  return array.map((element => element > 1 ? ")" : "(")).join('');
+}
+
+// Example usage:
+let x = duplicateEncode("recede");
+console.log(x); // Output: "()()()"
