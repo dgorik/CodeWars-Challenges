@@ -1,0 +1,26 @@
+function productSansN(numbers) {
+    // Calculate the total product of all elements in the array
+    let totalProduct = numbers.reduce((acc, num) => acc * BigInt(num), 1n);
+    
+    // Count the number of zeros in the array
+    let zeroCount = numbers.filter(num => num === 0).length;
+
+    if (zeroCount === 0) {
+        // If there are no zeros, divide the total product by each element to get the product sans that element
+        return numbers.map(num => totalProduct / BigInt(num));
+    } else if (zeroCount === 1) {
+        // If there is one zero, set the product at that index to the total product,
+        // and set the product for all other indices to zero
+        return numbers.map((num, index) => num === 0 ? 
+            numbers.slice(0, index).concat(numbers.slice(index + 1)).reduce((acc, element) => acc * BigInt(element), 1n) : 
+            0n
+        );
+    } else {
+        // If there are multiple zeros, set the product at all indices to zero
+        return Array(numbers.length).fill(0n);
+    }
+}
+
+// Example usage:
+let x = productSansN([1, 0, 4]);
+console.log(x); // Output: [0n, 4n, 0n]
