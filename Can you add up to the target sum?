@@ -1,0 +1,26 @@
+const getSum = function*(numbers, target, answer = []) {
+    let currentSum = answer.reduce((acc, element) => acc + element, 0);
+    if (currentSum === target) {
+        yield answer; // Set flag to indicate that a combination has been found
+    }
+  
+  if (currentSum > target) {
+        return  // Stop recursion if the current sum exceeds the target
+    }
+
+    for (let i = 0; i < numbers.length; i++) {
+        const n = numbers[i];
+        if (currentSum + n <= target) {
+            yield* getSum(numbers.slice(i), target, answer.concat([n])); // Include current number and recurse
+        }
+    }
+};
+
+const getNumbers = (numbers, target, answer = []) => {  
+    numbers = numbers.filter(num => num <= target);
+
+    const generator = getSum(numbers, target, answer);
+    return generator.next().value || []
+}
+
+let x = getNumbers([100, 25, 15, 7, 3], 24)
