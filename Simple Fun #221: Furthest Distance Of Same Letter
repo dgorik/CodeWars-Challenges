@@ -1,0 +1,23 @@
+function distSameLetter(s) {
+  // Remove duplicate characters from the input string
+  let removeduplicates = [...new Set(s.split(''))];
+  
+  // Initialize arrays to store distances and corresponding characters
+  let array1 = [];
+  let array2 = [];
+  
+  // Iterate over unique characters
+  removeduplicates.forEach((element, index) => {
+    // Calculate the distance between the last and first occurrence of the character, and push it into array1
+    array1.push(s.lastIndexOf(element) - s.indexOf(element) + 1);
+    // Push the character into array2
+    array2.push(element);
+  });
+  
+  // Find the maximum distance and its corresponding character
+  const maxDistance = Math.max(...array1);
+  const maxDistanceChar = array2[array1.indexOf(maxDistance)];
+
+  // Return the character with its maximum distance
+  return maxDistanceChar + maxDistance;
+}
