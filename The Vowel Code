@@ -1,0 +1,33 @@
+
+...................Version 1.............................
+
+function encode(string) {
+  let dictionary = {
+  a: 1, 
+  e: 2, 
+  i: 3,
+  o: 4,
+  u: 5, 
+}
+  return string.split('').map( element => {
+    return dictionary.hasOwnProperty(element)? dictionary[element]: element 
+  }).join('')
+}
+
+function decode(string) {
+  let dictionary = {
+  a: 1, 
+  e: 2, 
+  i: 3,
+  o: 4,
+  u: 5, 
+}
+  return string.split('').map( element => {
+   for( let key in dictionary){
+     if(dictionary[key] === parseInt(element)){
+       return key
+     }
+   }
+    return element
+  }).join('')
+}
