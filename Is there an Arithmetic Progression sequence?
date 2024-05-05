@@ -1,0 +1,32 @@
+function hasArithmProg(arr) {
+  if (arr.length < 3) {
+    return undefined;
+  }
+  
+  let difference = arr[1] - arr[0];
+  
+  let result = arr.every((element, index) => {
+    if (index >= arr.length - 1) {
+      return true; // Reached the end of the array, no more elements to compare
+    }
+    return element + difference === arr[index + 1]});
+  
+  if(!result){
+    
+    let differences = []
+    
+    for (let i = 0; i < arr.length - 2; i++) {
+      if ( arr[i+1] - arr[i] === arr[i+2] - arr[i+1]) {
+        differences.push(arr.slice(i, i+3));
+      }
+    }
+    return differences.length === 0? false: arr.indexOf(differences[0][0])
+  }
+  
+  return result
+  
+}
+
+let x = hasArithmProg([9,1])
+
+console.log(x)
