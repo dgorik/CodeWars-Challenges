@@ -1,0 +1,33 @@
+function longest(str) {
+  
+  if( str.length === 1){
+    return str
+  }
+  
+  let stack = [];
+  let substack = []
+  
+  for( let i = 0; i < str.length - 1; i++){
+    
+    substack = [str[i]];
+    
+    while (i < str.length - 1 && str[i] <= str[i + 1]) {
+      substack.push(str[i + 1]);
+      i++;
+    }
+    
+    stack.push(substack)
+    substack = []
+    
+  }
+  
+  console.log(stack)
+  
+  let answer = stack.reduce((acc, curr) => {
+    return acc.length >= curr.length ? acc : curr;
+  }, []);
+
+  return answer.join('');
+}
+
+let x = longest("asd")
