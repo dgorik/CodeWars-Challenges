@@ -1,0 +1,14 @@
+function lottery(str){
+   
+ let numbers = str.match(/\d+/g);
+  
+ if (numbers === null) {
+    return "One more run!";
+  }
+  
+  numbers = numbers.join('').split('').map(element => parseInt(element));
+  
+  return [...new Set(numbers)].join('');
+}
+
+let x = lottery("92CI3Cyx3h18kP9iR0eL")
