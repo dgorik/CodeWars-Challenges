@@ -1,0 +1,30 @@
+function twosDifference(input){
+ let difference = 2;
+  
+  let answer = [];
+  
+  let substack = [];
+  
+  for( let i = 0; i < input.length; i++){
+    let key = input[i];
+    
+    let j = i + 1;
+    
+    while( j < input.length){
+      if (Math.abs(key - input[j]) === 2){
+        substack.push(key);
+        substack.push(input[j]);
+        answer.push(substack.sort((a,b) => a-b));
+      }
+      j++;
+      substack = [];
+    }
+  }
+  
+  return answer.sort((a,b) => a[0]-b[0]);
+  
+}
+
+let x = twosDifference([1,2,3,4])
+
+console.log(x)
