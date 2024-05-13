@@ -1,0 +1,37 @@
+/**
+ * Explodes an array into repeated elements.
+ * If the input array consists of integers only, it repeats the array element-wise.
+ * If the input array contains non-integer elements, it repeats the first integer element found.
+ * If the input array is empty or contains no integers, returns "Void!".
+ * 
+ * @param {Array} x - The input array to explode.
+ * @returns {Array|string} - The exploded array or "Void!" if input is invalid.
+ */
+function explode(x){
+  // Helper function to check if an element is an integer
+  const integer = (element) => Number.isInteger(element);
+  
+  let answer = []
+  
+  // Helper function to add elements to the answer array
+  function addition(n){
+    for( let i = 1; i <= n; i++){
+      answer.push(x)
+    }
+    return answer
+  }
+  
+  // Main logic
+  // If all elements in the array are integers, repeat the array element-wise
+  if (x.every(integer)) {
+    return addition(x.reduce((acc, element) => element + acc, 0));
+  }
+  // If some elements are integers, repeat the first integer element found
+  else if (x.some(integer)) {
+    return addition(x.filter(integer)[0]);
+  }
+  // If the array is empty or contains no integers, return "Void!"
+  else {
+    return "Void!";
+  }
+}
