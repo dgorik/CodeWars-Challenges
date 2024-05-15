@@ -1,0 +1,12 @@
+sortme = function( names ){
+  if(names.length === 0){
+    return []
+  }
+  
+  if(names.length === 1){
+    return names;
+  }
+  
+  return names.sort((a, b) => a.localeCompare(b, undefined, {sensitivity: 'base'}))
+  
+}
