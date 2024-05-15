@@ -1,0 +1,11 @@
+function sortByValueAndIndex(array) {
+  return array.sort((a, b) => {
+    // Calculate the product of value and index for element 'a'
+    const productA = a * (array.indexOf(a) + 1);
+    // Calculate the product of value and index for element 'b'
+    const productB = b * (array.indexOf(b) + 1);
+    
+    // Compare the products directly
+    return productA - productB;
+  });
+}
