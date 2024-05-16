@@ -1,0 +1,16 @@
+function sortArray(array) {
+  let odd = array.filter(item => item % 2 != 0).sort((a,b) => a - b)
+  let oddindex = 0; 
+  
+  return array.map((element) => {
+    if(element%2 != 0){
+      oddindex++
+      return odd[oddindex - 1]
+    
+    }
+    return element
+  })
+}
+let x = sortArray([5, 3, 2, 8, 1, 4])
+
+console.log(x)
