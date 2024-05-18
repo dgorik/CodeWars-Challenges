@@ -1,0 +1,31 @@
+function multilevelsort(records, orders) {
+  return records.sort((a, b) => {
+    for (let i = 0; i < orders.length; i++) {
+      let key = orders[i].key;
+      let direction = orders[i].direction;
+      if (direction[0] === "a") {
+         if (a[key] > b[key]) return 1;
+         if (a[key] < b[key]) return -1;
+      }
+      if (direction[0] === "d") {
+        if (a[key] < b[key]) return 1;
+        if (a[key] > b[key]) return -1;
+      }
+    }
+    return 0; 
+  });
+}
+let x = multilevelsort([
+  { name: "christian", age: 40, job: "developer" },
+  { name: "andrew", age: 48, job: "developer" },
+  { name: "elisabeth", age: 31, job: "floor manager" },
+  { name: "oscar", age: 61, job: "floor manager" },
+  { name: "gisela", age: 51, job: "area manager" },
+  { name: "buffy", age: 27, job: "trainee" },
+  { name: "carl", age: 23, job: "trainee" }
+], [
+  { key: "job", direction: "ascending" },
+  { key: "age", direction: "descending" }
+]);
+
+console.log(x);
