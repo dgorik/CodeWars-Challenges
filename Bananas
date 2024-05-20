@@ -1,0 +1,47 @@
+/**
+/**
+ * Function that generates all possible ways to place dashes ('-') in a string
+ * so that the string 'banana' can be formed by removing dashes.
+ * 
+ * @param {string} s - The input string in which we want to place dashes.
+ * @returns {Array} - An array of strings, each representing a valid configuration of the input string with dashes.
+ */
+var bananas = function(s) {
+  
+  // Initialize an empty array to store the results
+  let answer = []
+  
+  // Regular expression to match the pattern 'banana' with any number of dashes in between characters
+  let re = /^-*b-*a-*n-*a-*n-*a-*$/
+  
+  /**
+   * Recursive function to place dashes in the string and check if it matches the pattern
+   * 
+   * @param {string} s - The current string with dashes
+   * @param {number} i - The current index in the string
+   */
+  function f(s, i) {
+    // Check if the current string matches the pattern 'banana' with dashes
+    if(re.exec(s)) answer[s] = "x"
+    
+    // Continue recursion until the end of the string
+    if(i < s.length) {
+      // Insert a dash at the current index and recurse
+      f(s.slice(0, i) + '-' + s.slice(i + 1), i + 1)
+      // Recurse without inserting a dash
+      f(s, i + 1)
+    }
+  }
+  
+  // Start the recursion with the initial string and starting index 0
+  f(s, 0)
+  
+  // Return the keys of the answer object which are the valid configurations
+  return Object.keys(answer)
+}
+
+// Example usage
+let s = "bananana"
+
+// Output the results
+console.log(bananas(s))
