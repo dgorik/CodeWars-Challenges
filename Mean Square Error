@@ -1,0 +1,6 @@
+var solution = function(firstArray, secondArray) {
+  
+  let n = firstArray.length
+  
+  return firstArray.reduce((acc, element, index) => acc + Math.pow(Math.abs(element - secondArray[index]),2),0)/n
+}
