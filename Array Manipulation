@@ -1,0 +1,30 @@
+/**
+ * Finds the smallest element greater than the current element in the rest of the array.
+ * If no such element exists, returns -1.
+ *
+ * @param {number[]} array - The input array of numbers.
+ * @returns {number[]} A new array where each element is the smallest element greater than
+ *                     the corresponding element in the input array, or -1 if no such element exists.
+ */
+function arrayManip(array) {
+  let n = array.length;
+
+  return array.map((element, index, array) => {
+    // Create a subarray starting from the current index to the end of the array
+    let filteredArray = array.slice(index).filter(item => item > element);
+
+    // If there are no elements greater than the current element, return -1
+    if (filteredArray.length === 0) {
+      return -1;
+    } else {
+      // Otherwise, return the smallest element greater than the current element
+      return Math.min(...filteredArray);
+    }
+  });
+}
+
+// Example usage of the arrayManip function
+let x = arrayManip([8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]);
+
+// Output the result
+console.log(x);
