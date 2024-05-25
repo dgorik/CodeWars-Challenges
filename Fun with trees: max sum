@@ -1,0 +1,24 @@
+function maxSum(root, currentSum = 0, array = []) {
+    if (root == null) {
+        return array;
+    }
+
+    // Update the current sum
+    currentSum += root.value;
+
+    // If the current node is a leaf, add the current sum to the array
+    if (root.left == null && root.right == null) {
+        array.push(currentSum);
+    }
+
+    // Recursively calculate the sum for the left and right subtrees
+    if (root.left != null) {
+        maxSum(root.left, currentSum, array);
+    }
+    if (root.right != null) {
+        maxSum(root.right, currentSum, array);
+    }
+
+    return array.length === 0? 0: Math.min(...array)
+}
+
