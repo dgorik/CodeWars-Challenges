@@ -1,0 +1,30 @@
+function sortSequence(sequence) {
+  let subsequences = [];
+  let subset = [];
+
+  for (let i = 0; i < sequence.length; i++) {
+    subset.push(sequence[i]);
+
+    if (sequence[i] === 0) {
+      let sortedSubset = subset.slice(0, -1).sort((a, b) => a - b);
+      sortedSubset.push(0);
+      subsequences.push(sortedSubset);
+      subset = [];
+    }
+  }
+
+  subsequences.sort((a, b) => {
+    let sumA = a.reduce((acc, element) => acc + element, 0);
+    let sumB = b.reduce((acc, element) => acc + element, 0);
+    return sumA - sumB;
+  });
+
+  
+  let result = subsequences.reduce((acc, currentArray) => acc.concat(currentArray), []);
+
+  return result;
+}
+
+let x = sortSequence( [3, 2, 1, 0, 5, 6, 4, 0, 1, 5, 3, 0, 2, 2, 2, 0])
+
+console.log(x)
