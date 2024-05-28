@@ -1,0 +1,31 @@
+function mergesorted(a, b) {
+  let merged = [];
+  let i = 0;
+  let j = 0;
+  
+  if( a.length === 0 || b.length === 0) return  a.length === 0? b: a
+  
+  while( i < a.length && j < b.length){
+    if(a[i] < b[j]){
+       merged.push(a[i])
+       i++
+    } 
+    
+    else{
+       merged.push(b[j])
+       j++
+    }
+  }
+  
+   while (i < a.length) {
+    merged.push(a[i]);
+    i++;
+  }
+  
+  // Add any remaining elements from b
+  while (j < b.length) {
+    merged.push(b[j]);
+    j++;
+  }
+  
+  return merged
