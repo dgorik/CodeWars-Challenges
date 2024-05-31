@@ -1,0 +1,34 @@
+/**
+ * Function to find the first `n` smallest elements in an array, maintaining their original order.
+ * 
+ * @param {number[]} array - The input array of numbers.
+ * @param {number} n - The number of smallest elements to find.
+ * @returns {number[]} A new array containing the first `n` smallest elements in their original order.
+ */
+function firstNSmallest(array, n) {
+    // Create a sorted copy of the array and take the first `n` smallest elements.
+    let nsmallest = array.slice().sort((a, b) => a - b).slice(0, n);
+  
+    // Filter the original array to keep only the first `n` smallest elements in their original order.
+    let result = array.filter(value => {
+        // Find the index of the current value in the `nsmallest` array.
+        let index = nsmallest.indexOf(value);
+        // If the value is found in `nsmallest`, remove it from `nsmallest` and keep it in the result.
+        if (index !== -1) {
+            nsmallest.splice(index, 1);
+            return true;
+        }
+        // If the value is not found in `nsmallest`, exclude it from the result.
+        return false;
+    });
+  
+    // Return the filtered array containing the first `n` smallest elements.
+    return result;
+}
+
+// Example usage:
+// Find the first 2 smallest elements in the array [2, 1, 2, 3, 4, 2].
+let x = firstNSmallest([2, 1, 2, 3, 4, 2], 2);
+
+// Output the result to the console.
+console.log(x);  // Output: [2, 1]
