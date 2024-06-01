@@ -1,0 +1,21 @@
+/**
+ * Finds the missing element between two arrays.
+ *
+ * This function takes two arrays, `arr1` and `arr2`, and assumes that `arr2`
+ * is a copy of `arr1` with exactly one element missing. The function calculates
+ * the missing element by finding the difference between the sums of the two arrays.
+ *
+ * @param {number[]} arr1 - The original array.
+ * @param {number[]} arr2 - The array with one element missing.
+ * @returns {number} The missing element.
+ */
+function findMissing(arr1, arr2) {
+  // Calculate the sum of all elements in arr1
+  const sumArr1 = arr1.reduce((acc, element) => acc + element, 0);
+  
+  // Calculate the sum of all elements in arr2
+  const sumArr2 = arr2.reduce((acc, element) => acc + element, 0);
+  
+  // The difference between the sums is the missing element
+  return sumArr1 - sumArr2;
+}
