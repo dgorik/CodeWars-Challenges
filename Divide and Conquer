@@ -1,0 +1,29 @@
+/**
+ * This function takes an array of mixed data types (numbers and strings that represent numbers)
+ * and returns the difference between the sum of all numeric elements and the sum of all numeric string elements.
+ * 
+ * @param {Array} x - The input array containing both numbers and strings.
+ * @returns {number} - The difference between the sum of the numeric elements and the sum of the numeric string elements.
+ */
+function divCon(x) {
+  // Filter out all elements that are strings
+  let strings = x.filter(e => typeof e == "string");
+  
+  // Filter out all elements that are not strings (i.e., numbers)
+  let numbers = x.filter(e => typeof e !== "string");
+  
+  // Calculate the sum of the numeric elements
+  let sumOfNumbers = numbers.reduce((acc, element) => acc + element, 0);
+  
+  // Convert the string elements to integers and calculate their sum
+  let sumOfStringNumbers = strings.map(element => parseInt(element)).reduce((acc, element) => acc + element, 0);
+  
+  // Return the difference between the sum of numeric elements and the sum of numeric string elements
+  return sumOfNumbers - sumOfStringNumbers;
+}
+
+// Example usage of the function
+let x = divCon([9, 3, '7', '3']);
+
+// Log the result to the console
+console.log(x); // Output: 2
