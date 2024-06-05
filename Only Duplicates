@@ -1,0 +1,19 @@
+* This function takes a string as input and returns a new string 
+ * containing only the characters that appear more than once in the input string.
+ * 
+ * @param {string} str - The input string.
+ * @returns {string} - A string containing only the characters that are duplicates in the input string.
+ */
+function onlyDuplicates(str) {
+  // Split the input string into an array of characters
+  return str.split('').filter(element => {
+    // Check if the current character appears more than once in the string
+    if (str.indexOf(element) != str.lastIndexOf(element)) return element;
+  }).join(''); // Join the filtered characters back into a string
+}
+
+// Example usage of the function
+let x = onlyDuplicates('abccdefee');
+
+// Log the result to the console
+console.log(x); // Output: 'ccee'
