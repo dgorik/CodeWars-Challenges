@@ -1,0 +1,13 @@
+* @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+   noduplicates = nums.filter((element, index,array) => array.indexOf(element) === index)
+
+   for( i = 0; i < noduplicates.length; i ++){
+     nums[i] = noduplicates[i]
+   }
+
+   nums.splice(noduplicates.length)
+
+};
