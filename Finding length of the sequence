@@ -1,0 +1,13 @@
+var lengthOfSequence = function (arr, n) {
+  let count = 0;
+  
+  for( let i = 0; i < arr.length; i++){
+    if(arr[i] === n){
+      count++
+    }
+  }
+  
+  if(count != 2) return 0
+  
+  return arr.slice(arr.indexOf(n),arr.lastIndexOf(n) + 1).length
+};
