@@ -1,0 +1,18 @@
+var longestPalindrome = function(s) {
+    let maxString = '';
+    let stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+        let currentString = '';
+        for (let j = i; j < s.length; j++) {
+            currentString += s[j];
+            if (currentString === currentString.split('').reverse().join('')) {
+                if (currentString.length > maxString.length) {
+                    maxString = currentString;
+                }
+            }
+        }
+    }
+
+    return maxString;
+};
