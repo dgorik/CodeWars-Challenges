@@ -1,0 +1,18 @@
+var lengthOfLongestSubstring = function(s) {
+    let maxLength = 0;
+    let compare = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        let substack = [];
+        compare = i;
+
+        while (compare < s.length && !substack.includes(s[compare])) {
+            substack.push(s[compare]);
+            compare++;
+        }
+
+        maxLength = Math.max(maxLength, substack.length);
+    }
+
+    return maxLength;
+};
