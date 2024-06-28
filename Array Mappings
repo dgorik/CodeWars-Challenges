@@ -1,0 +1,9 @@
+Array.prototype.map = function(callbackFn){
+  let result = []
+  
+  for(let value of this){
+    result.push(callbackFn(value))
+  }
+  
+  return result
+}
