@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function(nums) {
+    let n = nums.length;
+    let answer = new Array(n).fill(1);
+    
+    let prefixProduct = 1; 
+    for (let i = 0; i < n; i++) {
+        answer[i] = prefixProduct;
+        prefixProduct *= nums[i];
+    }// for each element, store store the product of all previous elements in answer[i]
+    // this allows us to store the product of all elements up to the LEFT of the current element for the next iteration
+
+    let suffixProduct = 1;
+    for (let i = n - 1; i >= 0; i--) {
+        answer[i] *= suffixProduct;// we multiply prefix and postfix to find the product of all values from the left and all values from the right
+        suffixProduct *= nums[i];
+    }// for each element, store store the product of all previous elements in answer[i]
+    // this allows us to store the product of all elements up to the RIGHT of the current element for the next iteration
+    return answer;
+};
