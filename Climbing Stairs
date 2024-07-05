@@ -1,0 +1,19 @@
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var climbStairs = function(n) {
+   let memo = []
+
+   function helper(memo, n){
+    if(n === 0 || n === 1){
+        return 1
+    }
+    if(!memo.includes(n)){
+        memo[n] = helper(memo, n - 1 ) + helper(memo, n - 2 )
+    }
+    return memo[n]
+   }
+
+   return helper(memo, n)
+};
