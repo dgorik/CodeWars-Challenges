@@ -1,0 +1,11 @@
+var plusOne = function(digits) {
+        // Increment the single digit and return as array
+    let numberStr = digits.join('');
+    let number = BigInt(numberStr) + 1n; // Use BigInt to handle large numbers
+    let resultStr = number.toString();
+    
+    // Convert the result back to an array of digits
+    let resultArray = resultStr.split('').map(Number);
+    
+    return resultArray;
+};
