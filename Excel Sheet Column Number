@@ -1,0 +1,17 @@
+/**
+ * @param {string} columnTitle
+ * @return {number}
+ */
+var titleToNumber = function(columnTitle) {
+    let string = 'abcdefghijklmnopqrstuvwxyz'
+
+    string = string.toUpperCase().split('')
+
+    let answer = 0
+
+    for(let i = 0; i < columnTitle.length; i++) {
+        answer = answer * 26 + (string.indexOf(columnTitle[i]) + 1);
+    }
+    
+    return answer;
+};
