@@ -1,0 +1,17 @@
+function divCon(x){
+  
+  let answer = 0
+  
+  for( var number of x){
+    if(typeof number  === "string"){
+      answer -= parseInt(number)
+    }
+    else{
+      answer += number
+    }
+
+   
+  }
+   return answer
+  
+}
