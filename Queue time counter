@@ -1,0 +1,18 @@
+function queue(q, buddyIndex) {
+  let mins = 0;
+
+  while (true) {
+    
+    const newWait = q.shift() - 1;
+
+    if (newWait > 0) {
+      q.push(newWait);
+    } else if (buddyIndex === 0) {
+      return mins + 1;
+    }
+
+    buddyIndex = (buddyIndex === 0) ? q.length - 1 : buddyIndex - 1;
+
+    mins += 1;
+  }
+}
