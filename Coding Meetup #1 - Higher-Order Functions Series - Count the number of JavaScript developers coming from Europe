@@ -1,0 +1,16 @@
+/**
+ * Function to count the number of JavaScript developers from Europe.
+ * @param {Array} list - Array of developer objects, where each object contains properties 'continent' and 'language'.
+ * @returns {number} - The count of developers from Europe who code in JavaScript.
+ */
+function countDevelopers(list) {
+  let answer = 0;
+  
+  for (let i = 0; i < list.length; i++) {
+    if (list[i]["continent"] === "Europe" && list[i]["language"] === "JavaScript") {
+      answer++;
+    }
+  }
+  
+  return answer;
+}
