@@ -1,0 +1,16 @@
+-- Select the names of employees
+SELECT name
+FROM Employee
+-- Where the employee's id is in the list of manager IDs
+WHERE id IN (
+    -- Subquery: Select manager IDs
+    SELECT managerId
+    FROM Employee
+    -- Group by managerId to count the number of employees under each manager
+    GROUP BY managerId
+    -- Only include managers with 5 or more employees
+    HAVING COUNT(*) >= 5
+);
+
+
+/When you use COUNT(*), it counts all the rows in the result set, including rows with NULL values. It does not matter what data is in the rows; each row is counted.
