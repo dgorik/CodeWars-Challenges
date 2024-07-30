@@ -1,0 +1,11 @@
+function wordSearch(query, seq){
+  
+  query = query.toLowerCase()
+  let answer = seq.filter(element => {
+    if(element.toLowerCase().includes(query)){
+      return element
+    }
+  })
+  
+  return answer.length? answer: ["Empty"]
+}
