@@ -1,0 +1,25 @@
+/**
+ * Merges two strings alternately, character by character. If one string is longer,
+ * the remaining characters from the longer string are appended to the result.
+ * 
+ * @param {string} word1 - The first string to merge.
+ * @param {string} word2 - The second string to merge.
+ * @return {string} - The merged string.
+ */
+var mergeAlternately = function(word1, word2) {
+    let answer = '';
+    let longest_string_length = Math.max(word1.length, word2.length);
+    
+    for (let i = 0; i < longest_string_length; i++) {
+        if (i >= word1.length) {
+            answer += word2[i];
+        } else if (i >= word2.length) {
+            answer += word1[i];
+        } else {
+            answer += word1[i];
+            answer += word2[i];
+        }
+    }
+
+    return answer;
+};
