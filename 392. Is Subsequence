@@ -1,0 +1,21 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t) {
+    s_length = s.length;
+    t_length = t.length
+
+    function helper(s,t,s_length, t_length){
+        if(s_length === 0) return true
+        if(t_length === 0) return false
+
+        if(s[s_length - 1] === t[t_length - 1]){
+            return helper(s,t,s_length - 1, t_length - 1)
+        }
+        return helper(s,t,s_length, t_length - 1)
+    }
+    
+    return helper(s, t, s_length, t_length);
+};
