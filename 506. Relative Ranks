@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} score
+ * @return {string[]}
+ */
+var findRelativeRanks = function(score) {
+    
+    let sorted = [...score].sort((a, b) => b - a);
+
+    console.log(sorted)
+
+    score = score.map((element, index) => {
+        if(element === sorted[0]) return "Gold Medal"
+
+        if(element === sorted[1]) return "Silver Medal"
+
+        if(element === sorted[2]) return "Bronze Medal"
+
+        return (sorted.indexOf(element) + 1).toString()
+    })
+
+    return score
+
+};
