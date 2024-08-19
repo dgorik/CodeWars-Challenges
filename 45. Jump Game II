@@ -1,0 +1,38 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+
+// Parameters: an array of numbers "nums"
+// Return: an integer that would represent the minium amount of steps it take to reach the last index of the array
+// Example: Input: nums = [2,3,1,1,4]
+// Output: 2
+// Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+//Pseudocode: 1. Initialize res = 0 (to count the number of jumps)
+// 2. Initialize l = 0, r = 0 (l and r represent the current level we are exploring)
+
+// 3. While r < nums.length - 1:
+//     a. Set farthest = 0 (to track the farthest point we can reach in this jump)
+//     b. For each index i from l to r:
+//         i. Update farthest = max(farthest, i + nums[i])
+//     c. Update l = r + 1 (move the left pointer to the next range)
+//     d. Update r = farthest (move the right pointer to the farthest point)
+//     e. Increment res by 1 (count the jump)
+
+4. Return res (the minimum number of jumps)
+var jump = function(nums) {
+    let res = 0
+    let l = 0 
+     let r = 0
+
+    while(r < nums.length - 1){
+        farthest = 0;
+        for(let i = l; i <= r; i++){
+            farthest = Math.max(farthest, i + nums[i])
+        }
+        l = r + 1
+        r = farthest
+        res ++
+    }
+    return res
+};
