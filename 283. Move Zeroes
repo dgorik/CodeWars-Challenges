@@ -1,0 +1,24 @@
+var moveZeroes = function(nums) {
+    let left = 0
+    for( i = 0; i < nums.length; i++){
+        if(nums[i] !== 0) {
+            [nums[i], nums[left]] = [nums[left], nums[i]];
+            left++
+        }
+    }  //here we are moving all non-zero elements to the beginning of the array. we are using left pointer to point where the next non zero element should go
+    
+    return nums
+};
+
+
+var moveZeroes = function(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) {
+            nums.splice(i, 1); // Remove the zero
+            nums.push(0);       // Add the zero at the end
+            i--;                // Decrement 'i' to check the current index again
+        }
+    }
+
+    return nums;
+}; //this solution might not pass some tests due to inefficiency 
