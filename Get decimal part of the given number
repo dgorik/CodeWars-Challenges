@@ -1,0 +1,9 @@
+function getDecimal(n){
+  
+ return Math.abs(n % 1)  //this statement allows us to extract a decimal part of a number and return an absolute value of it
+  
+}
+
+let x = getDecimal(4.3)
+
+console.log(x)
