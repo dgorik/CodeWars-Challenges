@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} nums
+ * @return {string[]}
+ */
+var summaryRanges = function(nums) {
+    let answer = []
+    let start = nums[0]
+
+    if (nums.length === 0) return []; // if the array is empty, we just return an empty array
+
+    for(let i = 1; i <= nums.length; i++){
+        if(nums[i - 1] + 1 == nums[i]) continue //if a number equals to a preeceding number plus one, we exit an iteration and go to the next one
+
+        if(start === nums[i - 1]){ //If start is equal to nums[i - 1], it means the range consists of a single number.
+            answer.push(`${start}`);
+        }
+        else{
+            answer.push(`${start}->${nums[i - 1]}`); //If start is not equal to nums[i-1], it means there's a range from start to nums[i - 1].
+        }
+        start = nums[i] //star represents a beginning of a possible range
+    }
+    return answer
+};
