@@ -1,0 +1,47 @@
+/** 
+ * @param {number} val
+ * @return {boolean}
+ */
+
+class RandomizedSet {
+    constructor() {
+        this.array = [];
+        this.map = new Map();
+    }
+
+    search(val){
+        return this.map.has(val)
+    }
+
+    insert(val){
+        let res = this.search(val) 
+        if (!res){
+            this.array.push(val)
+            this.map.set(val, this.array.length - 1)
+            return true
+        }
+        return false
+    }
+
+    remove(val){
+        if (this.search(val)) {
+            let indx = this.map.get(val);
+            let lastVal = this.array[this.array.length - 1];
+
+            // Swap only if val is not the last element
+            if (indx !== this.array.length - 1) {
+                this.array[indx] = lastVal;
+                this.map.set(lastVal, indx);
+            }
+            this.array.pop();
+            this.map.delete(val);
+            return true;
+        }
+        return false;
+    }
+
+    getRandom(val){
+        const randomIndex = Math.floor(Math.random() * this.array.length);
+        return this.array[randomIndex];
+    }
+}
