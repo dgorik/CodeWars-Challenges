@@ -1,0 +1,30 @@
+/**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+    let answer = []
+    let row  = []
+    
+    for( let i = 0; i < numRows; i++){
+        if(i == 0){
+            row.push(1)
+        }
+        else{
+            for(let j = 0; j < answer[i - 1].length + 1; j++){
+                if( j === 0 || j === answer[i - 1].length){
+                    row.push(1)
+                }
+
+                else{
+                    row.push(answer[i - 1][j-1] + answer[i - 1][j])
+                }
+            }
+        }
+
+        answer.push(row)
+        row = []
+    }
+
+    return answer
+};
