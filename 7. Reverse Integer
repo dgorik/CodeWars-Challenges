@@ -1,0 +1,33 @@
+/**
+ * @param {number} x
+ * @return {number}
+ */
+
+ //PREP
+
+ //A function that will always accept an integer. I assume no floats will be given
+
+ //This function will also return an integer. The returned integer will be reversed
+
+ //the example would be: we are given an integer 123, and the function should return an answer 321
+
+ //the pseudocode code:
+ //let's check if x has any zeros at the end. If it does, we should remove those zeros and reverse the number that comes before the last zero at the end
+ //in order to reverse a number, we can convert it to a string, reverse a string and then convert that string back to a number
+ // we should also extract a sign before the conversion
+ //before submitting the answer, we should check if the answer falls outside the range of [-231, 231 - 1]. If it does, return 0 and if it doesn't, return the answer itself.
+
+var reverse = function(x) {
+
+    if( x == 0 ) return 0
+
+    while(x % 10 == 0){
+        x = x/10
+    }
+
+    let sign = Math.sign(x)
+
+    x = sign * parseInt(x.toString().split('').reverse().join(''))
+
+    return x < Math.pow(-2, 31) || x > Math.pow(2, 31) - 1 ? 0: x
+};
