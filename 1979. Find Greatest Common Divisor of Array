@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findGCD = function(nums) {
+
+    let smallest = Math.min(...nums)
+    let largest = Math.max(...nums)
+
+    let remainder = null
+
+    while(remainder != 0){
+        remainder = largest % smallest //we need to keep dividing larger by a smaller numbers until we get to a reminder of 0
+        largest = smallest //we set the largest number to the smallest 
+        smallest = remainder //we set the largest number to the smallest
+        //the last two steps are essential so that when we keep going until the remainder becomes 0 
+        for examples: 
+two numbers are 48 and 18:
+we do 48 % 18 to get 12
+we then set the largest to 18 and the smallest to 12 to do the operation again
+we do 18 % 12 which equals 6
+we then set the largest to 12 and the smallest to 6 to do the operation again
+we do 12 % 6 which equals 0
+we set largest to 6 and smallest to 0
+since the remainder in this case equals 0, we exit the loop and return the largest number as an answer
+
+    }
+
+    return largest
+};
