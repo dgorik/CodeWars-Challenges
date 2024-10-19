@@ -1,0 +1,19 @@
+function solve(arr) {
+  //given an array of arrays and we need to return an integer
+  //we have an array of three arrays where each subarray has some numbers and we need to count the number of distinct arrays that we can make using the integers from given subarrays
+  //we need to put some sort of a looping mechanism and loop subarray to take exactly one element
+  let answer  = 1;
+  //we will increment the "answer", every time we find an array
+  
+  let uniqueSubarrays = arr.map(element => new Set(element))
+  
+  for (let element of uniqueSubarrays){
+      answer *= element.size
+  }
+  
+  return answer
+  
+  //if we have an array of 3 subarrays, where first subarray has 2 elements, second subarray has 3 elements and the third subarray has 4 elements
+  //since they any duplicates in them and we can only use 1 number from each subarray to make an array, we can use the formula below:
+  //2*3*4, which will be equal to the total number of arrays that we can create by using exactly one number from each subarray
+};
