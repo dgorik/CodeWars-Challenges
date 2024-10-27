@@ -1,0 +1,36 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var checkRecord = function(s) {
+   //we are given a string and we need to return a boolen value (true or false)
+
+   //we need to return true if a student is elegible for an attendance award. In order to be elegible for an award, a student must not have been absent for no more than two days and must not have been absent for more 3 or more than consencutive days
+
+   //pseudocode: we create an empty object and store every character of the string and how often it occurs in the string. We then loop through that object and count how many time a student has been absent (a number of times letter "A" occurs in the object ) as well as how many time a studen has been late (a number of time a letter "L" occurs in the object). If the number of times A occur is less than 2 and letter L occurs less than or equal to 3, we return true. Otherwise, we return false
+   //before storing every character in the object, we want to check if there are three consecutive Ls in the string. If there are which means that a student was late to three consecutive classe, we return false
+   let map = {}
+
+   for(var i = 0; i < s.length; i++){
+    if(s[i] === "L" && s[i+1] === "L" && s[i+2] === "L"){
+        return false
+    }
+    if(map[s[i]]){
+        map[s[i]] += 1
+    }
+    else{
+        map[s[i]] = 1
+    }
+
+   }
+
+   for(var letter in map){
+     if(map["A"] >= 2 ){
+        return false
+     }
+   }
+
+   return true
+
+
+};
