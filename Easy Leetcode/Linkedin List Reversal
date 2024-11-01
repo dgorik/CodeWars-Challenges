@@ -1,0 +1,28 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function(head) {
+
+    var current = head
+
+    var previous = null; 
+
+    var next = null
+
+    while(current != null){
+        next = current.next //here we are storing the connection to the linked list that we will have to reverse after breaking a connection
+        current.next = previous //reversing the link
+        previous = current//here we are setting prev to the value of current, which will have the recently reversed node as well as links that come before it
+        current = next //we are setting current to next which is the portion of the array that we need to continue working on
+    }
+
+    return previous
+};
