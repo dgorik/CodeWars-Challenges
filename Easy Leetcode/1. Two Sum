@@ -1,0 +1,27 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    let pairs = []
+
+    let numberSeen = {}
+
+    for(var i = 0; i < nums.length; i++){ // we are looping through the array
+
+        var difference = target - nums[i] //we calculate the difference between the target and a current num
+
+        if(numberSeen.hasOwnProperty(difference)){ //if the difference is in the object, we return the index of the difference and an index of nums[i]
+            pairs.push(i)
+            pairs.push(numberSeen[difference])
+            return pairs
+        }
+
+        else{ //if the difference is not in the object, we add the num to the object along with its index. We will then check if the next number in an array can be combined with any nums in the object to make the target
+            numberSeen[nums[i]] = i
+        }
+    }
+
+    console.log(numberSeen)
+};
