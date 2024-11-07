@@ -1,0 +1,12 @@
+var person = {
+  firstName: "Jane", 
+  lastName: "Doe",
+
+  set fullName(value) {
+    [this.firstName, this.lastName] = value.split(" ");
+  },
+
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+};
