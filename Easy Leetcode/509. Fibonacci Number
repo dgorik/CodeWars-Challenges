@@ -16,3 +16,21 @@ var fib = function(n) {
         return fib(n-1) + fib(n-2)
     }
 };
+
+
+///with memoization
+
+var cache = {}
+function fibonacci(n) {
+  if (n < 2)
+    return n;
+  else if (cache[n]){
+   return cache[n]
+  }
+  else{
+    cache[n] = fibonacci(n - 2) + fibonacci(n - 1)
+    return cache[n]
+  }
+}
+
+
