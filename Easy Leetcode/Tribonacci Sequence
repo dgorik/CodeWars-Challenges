@@ -1,0 +1,14 @@
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var tribonacci = function(n, cache) {
+    cache = cache || {}
+    if(cache[n]) return cache[n]
+    else{
+        if(n == 0) return 0
+        if( n > 0 && n < 3) return 1
+        return cache[n] = tribonacci(n-3,cache)+tribonacci(n-2, cache)+tribonacci(n-1, cache)
+    }
+    
+};
