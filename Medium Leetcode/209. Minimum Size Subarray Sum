@@ -1,0 +1,28 @@
+Given an array of positive integers nums and a positive integer target, return the minimal length of a 
+subarray
+ whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+
+/**
+ * @param {number} target
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minSubArrayLen = function(target, nums) {
+    let window_start = 0 //here we are initializing left and right pointers to 0
+    let window_end = 0
+    let current_sum = 0 //sum to 0 as well
+    let min_length = Infinity //and min length to 
+
+    for(let window_end = 0; window_end < nums.length; window_end++){
+        current_sum += nums[window_end] //the goal is to add a value of the right pointer to the sum to check below if it's equal or greater than the target
+
+        while(current_sum >= target){ //as long as the current_sum is greater or equal the target, we try to shrink the window to see if a smaller subarray is possible to be derived
+            min_length = Math.min(min_length, window_end - window_start + 1) //we set the min_length to the smallest between what the current min_length is and the one that we might have computed before
+            current_sum -= nums[window_start] //we substarct the value of the left pointer from the window 
+            window_start++ // we move the left pointer to the right by one in order to update the window that we will use to check the min length on the next iteration
+        }
+        
+    }
+
+    return min_length == Infinity? 0: min_length
+};
