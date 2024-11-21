@@ -1,0 +1,29 @@
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var findRepeatedDnaSequences = function(s) {
+    //we can set the left pointer at the first (0) element and the right pointer at (9) since the length of sequence is 10
+    //we can then move a window to the right by one and checking if a new window is unique
+    
+    let array = []
+
+    let left = 0
+
+    let right = 9
+
+    let map = {}
+
+    while(right <= s.length){
+        let substring = s.substring(left, right + 1)
+        map[substring] = (map[substring] || 0) + 1;
+        left ++
+        right++
+    }
+
+    for( let key in map){
+        if(map[key] > 1) array.push(key)
+    }
+
+    return array
+};
