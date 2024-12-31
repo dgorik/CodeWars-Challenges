@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+
+ //we are given a bst
+ //we need to return the min difference between the values of any two different nodes in the tree
+ //if we find the smalles node in BST which is always going to be the last element on the left branch and find a different between that node and its parent, we will find the smalles difference
+var minDiffInBST = function(root) {
+    var min = Infinity
+    var prev = null
+    function helper(node){
+        if(!node) return undefined
+        helper(node.left)
+        if(prev != null){
+            min = Math.min(min, node.val - prev)
+        }
+        prev = node.val
+        helper(node.right)
+    }
+    helper(root)
+    return min
+    
+};
