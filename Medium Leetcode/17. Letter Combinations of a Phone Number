@@ -1,0 +1,38 @@
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function(digits) {
+    //we are given a string of digits and need to return an array
+    //if the string is empty, we should return an empty array
+    //if the string represents a number from 2 to 9, return the individual letters that correspond to those numbers
+
+    let digitTochar = {
+    "2": "abc",
+    "3": "def",
+    "4": "ghi",
+    "5": "jkl",
+    "6": "mno",
+    "7": "pqrs",
+    "8": "tuv",
+    "9": "wxyz"
+    }
+
+    let answer = []
+    
+    function backtrack (i, combo){
+        if(combo.length == digits.length){
+            answer.push(combo)
+            return
+        }
+        for(var c of digitTochar[digits[i]]){
+            backtrack(i + 1, combo + c)
+        }
+    }
+
+    if(digits.length != 0){
+        backtrack(0,'')
+    }
+    return answer
+
+};
