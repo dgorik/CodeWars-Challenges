@@ -1,0 +1,28 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @returns {number[][]}
+     */
+    combinationSum(nums, target) {
+        let answer = []
+
+        function backtrack(i,combo,running_total){
+            if(running_total == target){
+                answer.push(combo.slice())
+                return
+            }
+            if( i >= nums.length || running_total > target){
+                return
+            }
+            combo.push(nums[i])
+            backtrack(i,combo.slice(),running_total + nums[i])
+            combo.pop()
+            backtrack(i + 1,combo.slice(),running_total)
+        }
+
+        backtrack(0,[],0)
+
+        return answer
+    }
+}
