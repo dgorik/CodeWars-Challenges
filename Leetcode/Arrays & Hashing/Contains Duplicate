@@ -1,0 +1,21 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @return {boolean}
+     */
+    hasDuplicate(nums) {
+
+        let map = {}
+
+        for(let element of nums){
+            if(map[element]){
+                return true
+            }
+            else{
+                map[element] = (map[element] || 0) + 1 //keep practicing this expression untill you remember it
+            }
+        }
+        return false
+        
+    }
+}
