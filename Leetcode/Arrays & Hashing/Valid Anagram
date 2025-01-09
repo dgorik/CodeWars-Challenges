@@ -1,0 +1,33 @@
+class Solution {
+    /**
+     * @param {string} s
+     * @param {string} t
+     * @return {boolean}
+     */
+    isAnagram(s, t) {
+        if(s.length != t.length){
+            return false
+        } //before you start doing even an easy problem, don't forget about the edge cases
+        
+        let s_map = {}
+        let t_map = {}
+
+        for(let element of s){
+            s_map[element] = (s_map[element] || 0) + 1
+        }
+
+        for(let element of t){
+            t_map[element] = (t_map[element] || 0) + 1
+        }
+
+        console.log(t_map)
+        console.log(s_map)
+
+        for(let character in s_map){
+            if(!t_map[character] || s_map[character] != t_map[character]){
+                return false
+            }
+        }
+        return true
+    }
+}
