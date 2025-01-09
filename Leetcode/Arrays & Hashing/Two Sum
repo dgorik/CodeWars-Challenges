@@ -1,0 +1,27 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number[]}
+     */
+    twoSum(nums, target) {
+        let map = {}
+
+        for(let i = 0; i < nums.length; i++){
+            map[nums[i]] = i
+        }
+
+        console.log(map)
+
+        for(let i = 0; i < nums.length; i++){
+            let difference = target  - nums[i]
+            console.log(difference)
+            if(map[difference] && map[difference] != i){
+                return [i, map[difference]]
+            }
+            difference = 0
+        }
+    }
+}
+
+//A key to remember here is you store each number of the array in the hash map, then loop through that array to calculate the difference between target and each element and if the difference equals to another element in the array (that we have already stored in the hashmap), we return the indices 
