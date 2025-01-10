@@ -1,0 +1,34 @@
+class Solution {
+    /**
+     * @param {string[]} strs
+     * @return {string[][]}
+     */
+    groupAnagrams(strs) {
+
+        let map = {}
+
+        for( let i = 0; i < strs.length; i++){
+            let count = new Array(26).fill(0)
+            for(let j = 0; j < strs[i].length; j++){
+                count[strs[i][j].charCodeAt(0) - 'a'.charCodeAt(0)] += 1
+            }
+            let key = count.join(',')
+
+            if(!map[key]){
+                map[key] = []
+            }
+            map[key].push(strs[i])
+
+        }
+
+        return Object.values(map)
+
+    }
+}
+
+//The general idea:
+//We initialize an empty array with 26 characters and fill it with 0s 
+//We loop through every string in the array
+//For every string we loop through each character and find the character place in an empty array by calculcating it's alphabetic index. If we encounter the same character, we add one to the index
+//We then add convert an array into a string and add it as a key to a map
+//On next iterations, when if a string produces a key that we already have in the map, we add the word that produced that key as a value to a hashmap
