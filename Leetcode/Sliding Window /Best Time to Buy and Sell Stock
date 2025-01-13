@@ -1,0 +1,47 @@
+class Solution {
+    /**
+     * @param {number[]} prices
+     * @return {number}
+     */
+    maxProfit(prices) {
+        let profit = null
+        let buy_price = prices[0]
+
+        for(let i = 0; i < prices.length; i++){
+            if(buy_price > prices[i]){
+                buy_price = prices[i]
+            }
+            profit = Math.max(profit, prices[i] - buy_price )
+        }
+
+        return profit
+    }
+}
+
+
+
+
+///////// Second Solution //////////
+
+
+class Solution {
+    /**
+     * @param {number[]} prices
+     * @return {number}
+     */
+    maxProfit(prices) {
+        let profit = null
+        let pointer = 0
+        let buy_price = prices[0]
+
+        while(pointer < prices.length){
+            if(buy_price > prices[pointer]){
+                buy_price = prices[pointer]
+            }
+            profit = Math.max(profit, prices[pointer] - buy_price)
+            pointer++
+        }
+
+        return profit
+    }
+}
