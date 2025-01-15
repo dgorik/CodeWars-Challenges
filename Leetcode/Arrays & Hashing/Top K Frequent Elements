@@ -1,0 +1,32 @@
+class Solution {
+    /**
+     * @param {number[]} nums
+     * @param {number} k
+     * @return {number[]}
+     */
+    topKFrequent(nums, k) {
+        let map = {}
+        let freq = Array.from({length: nums.length + 1}, () => []) //we create an array of nums.length and insert an empty array at each index
+
+        for(let element of nums){
+            map[element] = (map[element] || 0) + 1
+        } //we add the elements of array and their frequinces to the hash table
+
+        for(let element in map){
+            freq[map[element]].push(element)
+        } //we look up how many times each element appears in the array and add that element to an array using the frequency as an index
+        
+        let res = []
+
+        for( let i = freq.length - 1; i > 0; i--){ //we loop from the end because we need to look at most frequent items and since each index of the array corresponds to how man times each num appears in nums, we want to start from the end
+            if (freq[i]){ //if freq[i] is not empty
+                for(let n of freq[i]){ //we loop through a subarray at index i and add elements to res
+                    res.push(n)
+                    if(res.length == k){
+                        return res
+                    }
+                }
+            }
+        }
+    }
+}
