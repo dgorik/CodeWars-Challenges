@@ -1,0 +1,58 @@
+
+//The idea is to traverse through two lists, add all their elements to two different arrays, merge those array into one sorted array and use that array to crete a linked list. Return the linked list
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     constructor(val = 0, next = null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+
+class Solution {
+    /**
+     * @param {ListNode} list1
+     * @param {ListNode} list2
+     * @return {ListNode}
+     */
+    mergeTwoLists(list1, list2) {
+
+        let array1 = []
+        let array2 = []
+
+        let current1 = list1
+        while(current1){
+            array1.push(current1.val)
+            current1 = current1.next
+        }
+
+        let current2 = list2
+        while(current2){
+            array2.push(current2.val)
+            current2 = current2.next
+        }
+
+        let merged_array = [...array1,...array2].sort((a,b) => a-b)
+
+        function create_list(array) {
+            let head = null
+            let current = null
+
+            for(var i = 0; i < array.length; i++){
+                let node = new ListNode(array[i])
+                if(i === 0){
+                    head = node
+                    current = node
+                }
+                else{
+                    current.next = node
+                    current = current.next
+                }
+            }
+            return head
+        }
+
+        return create_list(merged_array)
+    }
+}
