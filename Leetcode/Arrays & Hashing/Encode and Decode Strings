@@ -1,0 +1,38 @@
+class Solution {
+    /**
+     * Encodes a list of strings into a single string.
+     * @param {string[]} strs
+     * @returns {string}
+     */
+    encode(strs) {
+        let res = "";
+
+        for (let element of strs) {
+            res += element.length + "#" + element;
+        }
+        return res;
+    }
+
+    /**
+     * Decodes a single string back into a list of strings.
+     * @param {string} str
+     * @returns {string[]}
+     */
+    decode(str) {
+        let res = [];
+        let i = 0;
+
+        while (i < str.length) {
+            let j = i;
+            while (str[j] !== "#") {
+                j++;
+            }
+            let length = parseInt(str.substring(i, j));
+            res.push(str.substring(j + 1, j + 1 + length));
+            i = j + 1 + length;
+        }
+        return res;
+    }
+}
+
+//The idea here is you encode each string in an array but puting the length of the string + "#" + string itself. That way when you decode the string, you know how long each string is. 
