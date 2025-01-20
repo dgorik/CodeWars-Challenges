@@ -1,0 +1,54 @@
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(numbers, target) {
+    let l = 0
+    let r = numbers.length - 1
+
+    while( l < r){
+        let current_sum = numbers[l] + numbers[r]
+
+        if(current_sum > target){
+            r--
+        }
+        else if( current_sum < target){
+            l++
+        }
+        else{
+            return [l + 1, r + 1]
+        }
+    }
+
+    return []
+};
+
+//The idea is to have two-pointers. Originally, the left one starts from the first element of the array and the right one starts at the end. 
+//We then calculate the current_sum by adding elements at left and right indices. If the current_sum is larger the target, we decremenet r--
+//If it's smaller than the target, we increment left.
+
+
+
+------------------------------- Hash Map Solution -------------------------------
+
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(numbers, target) {
+    let map = {}
+
+    for(let i = 0; i < numbers.length; i++){
+        let temp = target - numbers[i]
+        if(map[temp]){
+          return [map[temp], i + 1]
+        }
+        map[numbers[i]] = i + 1
+    }
+
+    return []
+};
+
+
