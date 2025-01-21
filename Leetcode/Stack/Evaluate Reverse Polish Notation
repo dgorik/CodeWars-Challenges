@@ -1,0 +1,46 @@
+/**
+ * @param {string[]} tokens
+ * @return {number}
+ */
+var evalRPN = function(tokens) {
+    let operands = ['+', '-', '*','/']
+        let stack = []
+
+        function operation(a,b,operand){
+            if(operand == '+'){
+                return a + b
+            }
+            else if(operand == '-'){
+                return a - b
+            }
+            else if(operand == '*'){
+                return a * b
+            }
+            else {
+                return a / b
+            }
+        }
+
+        for(let i = 0; i < tokens.length; i++){
+            if(!operands.includes(tokens[i])){
+                stack.push(tokens[i])
+            }
+            else{
+                let number2 = stack.pop()
+                let number1 = stack.pop()
+                stack.push(operation(parseInt(number1),parseInt(number2),tokens[i]))
+            }
+        }
+
+        return Math.floor(stack[0])
+};
+
+//The idea here is to loop through an array of tokens. While looping, if the element is a not an operation sign, we add the element to the stack. 
+//If the element is an operation sign, we take the last two elements from the stack, perform an operation on them and push them to the beginning of the stack
+//["1","2","+","3","*","4","-"], stack []
+//stack [1,2]
+//stack[3]
+//stack[3,3]
+//stack[9]
+//stack [9,4]
+//stack[5]
