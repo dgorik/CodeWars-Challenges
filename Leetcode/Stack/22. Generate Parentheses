@@ -1,0 +1,28 @@
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function(n) {
+    let answer = []
+
+    function backtrack(open,close,combo){
+        if(open == n && close == n){
+            answer.push(combo)
+            return
+        }
+        if(open < n){
+            backtrack(open + 1, close, combo + "(")
+        }
+        if(close < open){
+            backtrack(open, close + 1, combo + ")")
+        }
+    }
+
+    if(n != 0){
+        backtrack(1, 0, "(")
+    }
+
+    return answer
+};
+
+//The idea here is to start from "(" and then keep exploring all potential combinations untill the number of open and closed parenthesis equals n
