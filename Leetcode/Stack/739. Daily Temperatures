@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} temperatures
+ * @return {number[]}
+ */
+var dailyTemperatures = function(temperatures) {
+    let n = temperatures.length
+    let answer = new Array(n).fill(0)
+    let stack = []
+
+    for(let i = 0; i < n; i++){
+        let t = temperatures[i]
+        while(stack.length > 0 && stack[stack.length - 1][0] < t){
+            [stackT, stackInd] = stack.pop()
+            answer[stackInd] = i - stackInd
+        }
+        stack.push([t, i])
+    }
+
+    return answer
+};
+
+//The idea here is to create a monotonic stack and add elements to the stack until we reach an element that is not smaller than the last element in the stack
+// We add an element (temperature) and its index to the stack
+
+//When we find an element that is bigger than the top element of the stack, we pop the top element in the stack and set a element at StackInd to a difference between i (an index of the element we are looping through) and StackInd
