@@ -1,0 +1,30 @@
+var invertTree = function(root) {
+    if(!root) return null
+    
+    let stack = []
+    stack.push(root)
+
+    while(stack.length > 0){
+        let node = stack.pop()
+
+        let temp = node.right
+        node.right = node.left
+        node.left = temp
+
+        //[node.right, node.left] =  [node.left, node.right]
+
+        if(node.right){
+            stack.push(node.right)
+        }
+
+        if(node.left){
+            stack.push(node.left)
+        }
+    }
+
+    return root
+};
+
+//The idea behind the algorithm is to push the root node (the head of the tree) onto a stack and then explore its children. During this exploration, we swap the left and right children of each node we visit. This process continues for each node, recursively swapping left and right at every level until all nodes in the tree have been processed.
+
+The use of the stack ensures we traverse the tree in a depth-first manner, where we visit each node, swap its children, and then push its children onto the stack to visit next.
