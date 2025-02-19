@@ -1,0 +1,29 @@
+class Solution {
+    /**
+     * @param {number[]} temperatures
+     * @return {number[]}
+     */
+    dailyTemperatures(temperatures) {
+        //prep: 
+        //we are giving an array of numbers and we have to return an array of numbers
+        //the array will always be with numbers and the resulted array should also be with numbers
+        //if given array has a length of 1, we should return [0]
+        //we should use a stack to solve this problem (use push and pop)
+        //we create an empty array where we will store the numbers of days before a warmer tempreature for each day
+        //we should also create a pointer that will move through future days untill a day with a warmer tempmerature is found
+        //while loop to loop through future days would stop if we reach the last day or if find a day with a warmer tempereature
+
+        let stack = []
+        let answer = Array(temperatures.length).fill(0)
+
+        for(let i = 0; i < temperatures.length; i++){
+            while(stack.length > 0 && temperatures[i] > temperatures[stack[stack.length - 1]]){
+               let prevIdx = stack.pop()
+               answer[prevIdx] = i - prevIdx 
+            }
+             stack.push(i)
+        }
+        return answer
+
+    }
+}
