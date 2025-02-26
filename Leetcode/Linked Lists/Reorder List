@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {void} Do not return anything, modify head in-place instead.
+ */
+var reorderList = function(head) {
+    let array = []
+
+    let current = head
+
+    while(current){
+        array.push(current)
+        current = current.next
+    }
+
+    let l = 0
+    let r = array.length - 1
+
+    while(l<r){
+        array[l].next = array[r]
+        l++
+        if(l > r) break
+        array[r].next = array[l]
+        r--
+    }
+
+    array[l].next = null 
+};
+
+
+//This is a brute force solution. The idea here is to create an array and add all nodes to it. We then loop through an array and connect first node with the last one, last one with the second one, second one with the second to last (etc).
