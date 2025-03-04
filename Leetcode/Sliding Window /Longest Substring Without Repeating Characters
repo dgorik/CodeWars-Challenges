@@ -1,0 +1,23 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    let set = new Set()
+    let res = 0
+    let l = 0
+
+    for(let r = 0; r < s.length; r++){
+        while(set.has(s[r])){
+            set.delete(s[l])
+            l++
+        }
+        set.add(s[r])
+        res = Math.max(res, r - l + 1)
+    }
+
+    return res
+};
+
+//The general idea is to create a set and keep adding elements to the set while looping from the beginning of the loop
+//Once we encounter the character that we have already added to the set, we remove that character from the set and increment pointer l by one
