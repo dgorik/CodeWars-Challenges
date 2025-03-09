@@ -1,0 +1,53 @@
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var characterReplacement = function(s, k) {
+    let answer = 0
+    let l = 0
+    let window_size = 0
+    let max_count = 0
+    let counter = new Array(26).fill(0)
+
+    for(let i = 0; i < s.length; i++){
+        window_size = i - l + 1;
+
+        counter[s.charCodeAt(i) - "A".charCodeAt(0)]++
+        max_count = Math.max(max_count, counter[s.charCodeAt(i) - 'A'.charCodeAt(0)])
+
+        if(window_size - max_count > k){
+            counter[s.charCodeAt(l) - "A".charCodeAt(0)]--
+            l++
+        }
+
+        window_size = i - l + 1;
+
+        answer = Math.max(answer, window_size)
+
+    }
+
+    return answer
+
+};
+
+//The general idea is to create an array where you would store the frequency of characters. We will then update the max_count value with the character that appears the most.
+//If the difference between a max_count and current_window is more than k, we decrement the frequency of the left most character and increment the left pointer (which moves the window to the right)
+
+
+i = 3 (Character = 'A')
+window_size = 3 - 0 + 1 = 4
+counter[0]++ → counter = [3, 1, 0, ..., 0]
+max_count = max(2, 3) = 3
+Condition: window_size - max_count = 4 - 3 = 1 (✅ <= k)
+answer = max(3, 4) = 4
+
+i = 4 (Character = 'B')
+window_size = 4 - 0 + 1 = 5
+counter[1]++ → counter = [3, 2, 0, ..., 0]
+max_count = max(3, 2) = 3
+Condition: window_size - max_count = 5 - 3 = 2 (❌ > k)
+Shrink the window:
+Decrease counter[0] → counter = [2, 2, 0, ..., 0]
+Move l to 1
+answer = max(4, 4) = 4
