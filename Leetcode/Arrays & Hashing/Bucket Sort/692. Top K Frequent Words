@@ -1,0 +1,27 @@
+/**
+ * @param {string[]} words
+ * @param {number} k
+ * @return {string[]}
+ */
+var topKFrequent = function(words, k) {
+    let map = {}
+    let array = Array.from({length: words.length + 1}, () => [])
+
+    for(let word of words){
+        map[word] = (map[word] || 0) + 1
+    }
+
+    for(let element in map){
+        array[map[element]].push(element)
+    }
+    
+    let res = []
+    for(let i = array.length - 1; i >= 0; i--){
+        array[i].sort()
+        console.log(array[i])
+        for(let element of array[i]){
+            res.push(element)
+            if(res.length == k) return res
+        }
+    }
+};
