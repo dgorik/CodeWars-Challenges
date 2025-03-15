@@ -1,0 +1,28 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var frequencySort = function(s) {
+    let frequency = Array.from({length: s.length + 1}, () => [])
+    let map = {}
+
+    for(let element of s){
+        map[element] = (map[element] || 0) + 1
+    }
+
+    for(let element in map){
+        frequency[map[element]].push(element)
+    }
+
+    let res = ''
+
+    for(let i = frequency.length - 1; i >= 0; i--){
+        for(let char of frequency[i]){
+            res += char.repeat(i)
+        }
+    }
+
+    return res
+};
+
+//The idea is a bucket sort - frequency array has s.length subarrays where each subarray stores character based on their frequncies which equals to the index of each subarray
