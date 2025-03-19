@@ -1,0 +1,27 @@
+var removeNthFromEnd = function(head, n) {
+    let dummy = new ListNode(0, head)
+    let fast = dummy
+    let slow = dummy
+
+    for(let i = 0; i <= n; i++){
+        fast = fast.next
+    }
+
+    console.log(fast)
+
+    while(fast){
+        slow = slow.next
+        fast = fast.next
+    }
+
+    console.log(slow)
+
+    slow.next = slow.next.next
+
+    return dummy.next
+};
+
+//The general idea is that you set up two pointers: one fast and one slow.
+//You move the fast pointers to n+1 positon
+//You then move the slow and right pointers untill right is not null
+//The positon of a slow pointer will be a node before the one we need to remove so you can remove the node by writing slow.next = slow.next.next
