@@ -1,37 +1,38 @@
-/**
- * @param {character[][]} board
- * @return {boolean}
- */
-var isValidSudoku = function(board) {
-    let rows = {}
-    let columns = {}
-    let squares = {}
+class Solution {
+    /**
+     * @param {character[][]} board
+     * @return {boolean}
+     */
+    isValidSudoku(board) {
+     let rows = {}
+     let columns = {}
+     let squares = {}
 
-    for(let i = 0; i < 9; i++){
-        for(let j = 0; j < 9; j++){
-            let num = board[i][j]
-            let squareIndex = Math.floor(i / 3) * 3 + Math.floor(j / 3); //here we are calcualting the number (1st, 2nd, 3rd) 3x3 grid that the number belongs to
-
-            if(num == '.'){
+     for(let i = 0; i < 9; i++){
+        for (let j = 0; j < 9; j++){
+            if(board[i][j] == "."){
                 continue
             }
 
+            let number = board[i][j]
+            let squares_idx = `${Math.floor(i / 3)}-${Math.floor(j / 3)}`
+
             if(!rows[i]) rows[i] = {}
-
             if(!columns[j]) columns[j] = {}
+            if(!squares[squares_idx]) squares[squares_idx] = {}
 
-            if (!squares[squareIndex]) squares[squareIndex] = {};
-
-            if (rows[i][num] || columns[j][num] || squares[squareIndex][num]) {
-                return false;
+            if(rows[i][number] || columns[j][number] || squares[squares_idx][number]){
+                return false
             }
 
-            rows[i][num] = true;
-            columns[j][num] = true;
-            squares[squareIndex][num] = true;
+            rows[i][number] = 'seen'
+            columns[j][number] = 'seen'
+            squares[squares_idx][number] = 'seen'
         }
+     }
+
+     return true
+
     }
-
-    return true
-
-};
+    
+}
