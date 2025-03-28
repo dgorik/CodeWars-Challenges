@@ -1,0 +1,36 @@
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function(height) {
+
+    let left = Array.from({length: height.length}, () => 0)
+    let right = Array.from({length: height.length}, () => 0)
+    let max_l = 0
+    let max_r = 0
+
+    for(let i = 1; i < left.length; i++){
+        max_l = Math.max(max_l, height[i - 1])
+        left[i] = max_l
+    }
+    for(let j = right.length - 2; j >= 0; j--){
+        max_r = Math.max(max_r, height[j + 1])
+        right[j] = max_r
+    }
+
+    console.log(left)
+    console.log(right)
+
+    let trap_water = 0
+
+    for(let i = 0; i < height.length; i++){
+        let pot = Math.min(left[i], right[i])
+        trap_water += Math.max(0, pot - height[i])
+    }
+
+    return trap_water
+};
+
+//The general idea is to create two arrays - left and right. Left array will store max element to the left of each height[i] and right array will store max elements to the right of each height[i]
+//We then use those arrays to find a min bar either on the right or on the left of each height[i] because the water will be bounded by the shortes of two talles pillars
+//if heigth[i] - Math.min(left[i], right[i]) < 0, then we return 0. If heigth[i] - Math.min(left[i], right[i]) < 0, we add that difference to trapped_water variable
