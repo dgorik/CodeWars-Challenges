@@ -1,0 +1,41 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    let dummy = new ListNode()
+    let node = dummy
+    let carry = 0
+
+    while(l1 || l2 || carry){
+        let v1 = l1? l1.val : 0
+        let v2 = l2? l2.val : 0
+
+        let sum = v1 + v2 + carry
+
+        carry = Math.floor(sum / 10)
+
+        node.next = new ListNode(sum % 10)
+        node = node.next
+
+        if(l1) l1 = l1.next
+
+        if(l2) l2 = l2.next
+
+    }
+
+    return dummy.next
+};
+
+
+//The general idea is to loop through both linked lists till both of them are exhausted or carry is zero
+//we calculate carry by dividing sum by 10 with Math.floor
+//we calculate sum by adding v1 v2 and carry and modding it (9 + 9 = 18 but we would write 8 (18%10) and carry 1)
