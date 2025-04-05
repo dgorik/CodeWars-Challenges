@@ -1,0 +1,51 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {void} Do not return anything, modify head in-place instead.
+ */
+var reorderList = function(head) {
+
+    if(!head) return
+
+    let slow = head
+    let fast = head
+
+    while(fast && fast.next){
+        fast = fast.next.next
+        slow = slow.next
+    }
+
+    let current = slow
+    let prev = null
+
+    while(current){
+        let next = current.next
+        current.next = prev
+        prev = current
+        current = next
+    }
+
+    let first = head
+    let second = prev
+
+    while(second.next){
+        let t1 = first.next
+        let t2 = second.next
+        first.next = second
+        second.next = t1
+        first = t1
+        second = t2
+    }
+    
+};
+
+//The general idea is to find a mid point of the linked list and use that midpoint to split the list into two lists
+//We then reverse the second half and merger it with the first one
+
+//Example = [1,2,3,4] =>>>>>>> first half: [1,2,3] and the second half: [4,3] (reversed). We then merger two linked lists to get [1,4,2,3]
