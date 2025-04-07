@@ -1,0 +1,26 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+    let current = head
+
+    while(current){
+       while(current.next && current.val == current.next.val){
+            current.next = current.next.next
+       }
+       current = current.next
+    }
+    return head
+}
+
+//The general idea is to move current one step forward if there are no duplicated in the next node and move it to current.next.next if there are duplicates
+//current = current.next -  moves a pointer
+//current.next = current.next.next - skips the next node
