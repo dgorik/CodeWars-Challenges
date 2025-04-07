@@ -1,0 +1,29 @@
+**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+    let dummy = new ListNode()
+    let prev = dummy
+    dummy.next = head
+    let current = head
+
+    while(current && current.next){
+        if(current.next && current.val == current.next.val){
+            while(current.next && current.val == current.next.val){
+                current = current.next
+            }
+            prev.next = current.next
+        }
+        else{
+            prev = current
+        }
+        current = current.next
+    }
+
+    return dummy.next
+}
+
+//The general idea here is to create: dummy node (point it to head), prev (set to dummy) and current (set it at head)
+//We then traverse a list and if there are duplicates we keep moving current = current.next. When current.val is no longer equal to current.next.val, we shift prev.next to current.next (essentially remove the links between duplicates)
+//If current.val != current.next.val we move prev to current and move current to current.next
