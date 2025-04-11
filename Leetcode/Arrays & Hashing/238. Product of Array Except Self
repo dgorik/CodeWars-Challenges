@@ -25,3 +25,5 @@ var productExceptSelf = function(nums) {
 
 //The idea here is to calculate the product all all nums to the left of each nummber and all nums to the right of it
 //We then take the product of both side and multiply them by each other
+
+
