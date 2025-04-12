@@ -1,0 +1,26 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    let answer = []
+    let subset = []
+
+    function dfs(i){
+        if(i == nums.length){
+            answer.push([...subset])
+            return
+        }
+        subset.push(nums[i])
+        dfs(i+1)
+        subset.pop()
+        dfs(i+1)
+    }
+
+    dfs(0)
+
+    return answer
+};
+
+// A general idea here is to create a tree with all possible combinations. At each node we decide whether we add (subset.push(nums[i])) or don't add (subset.pop()) a digit from nums
+//When i equals to nums.length that means we reached the end of the tree and should return answer with a subset 
