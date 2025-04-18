@@ -1,0 +1,26 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsetsWithDup = function(nums) {
+    let answer = []
+    nums.sort()
+
+    function dfs(i, subset){
+        if(i == nums.length){
+            answer.push(subset.slice())
+            return
+        }
+        subset.push(nums[i])
+        dfs(i+1, subset)
+        subset.pop()
+        while(nums[i] == nums[i + 1]){
+            i++
+        }
+        dfs(i+1, subset)
+    }
+
+    dfs(0,[])
+
+    return answer
+};
