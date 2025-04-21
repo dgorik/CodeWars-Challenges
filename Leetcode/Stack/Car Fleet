@@ -1,23 +1,25 @@
-carFleet(target, position, speed) {
-        let pair = []
-        let stack = []
-
-        for(let i = 0; i < position.length; i++){
-            pair.push([position[i], speed[i]])
-        }
-
-        pair.sort((a,b) => b[0] - a[0])
-
-        console.log(pair)
-
-        for(let i = 0; i < pair.length; i++){
-            let time = (target - pair[i][0]) / pair[i][1]
-            stack.push(time)
-
-            if(stack.length >= 2 && stack[stack.length - 1] <= stack[stack.length - 2]){
-                stack.pop()
-            }
-        }
-
-        return stack.length
+var carFleet = function(target, position, speed) {
+    let pair = Array.from({length: position.length}, () => [])
+    let stack = []
+    
+    for(let i = 0; i < pair.length; i++){
+        pair[i] = [position[i], speed[i]]
     }
+
+    pair.sort((a,b) => b[0] - a[0])
+
+    for(let i = 0; i < pair.length; i++){
+        let time = (target - pair[i][0]) / pair[i][1]
+        stack.push(time)
+        if(stack.length >= 2 && stack[stack.length - 2] >= stack[stack.length - 1] ){
+            stack.pop()
+        }
+    }
+
+    return stack.length
+};
+
+//The general idea here is to create an array of pairs where each subarray is the positon and speed of each car
+//You then loop through that array and calculate how much time it will take each car to get from its position at its speed to the target
+//We push time for each car to the stack
+//If we encounter a car that is faster that the last car in the stack, we pop the top element off the stack because those two cars will eventually form a fleet
