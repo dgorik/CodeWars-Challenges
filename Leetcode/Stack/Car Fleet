@@ -1,0 +1,23 @@
+carFleet(target, position, speed) {
+        let pair = []
+        let stack = []
+
+        for(let i = 0; i < position.length; i++){
+            pair.push([position[i], speed[i]])
+        }
+
+        pair.sort((a,b) => b[0] - a[0])
+
+        console.log(pair)
+
+        for(let i = 0; i < pair.length; i++){
+            let time = (target - pair[i][0]) / pair[i][1]
+            stack.push(time)
+
+            if(stack.length >= 2 && stack[stack.length - 1] <= stack[stack.length - 2]){
+                stack.pop()
+            }
+        }
+
+        return stack.length
+    }
