@@ -1,0 +1,32 @@
+largestRectangleArea(heights) {
+        let maxArea = 0
+        let stack = []
+
+        for(let i = 0; i < heights.length; i++){
+            let start = i
+
+            while(stack.length != 0 && stack[stack.length - 1][1] > heights[i]){
+               let [index, height] = stack.pop()
+               maxArea = Math.max(maxArea, height * (i - index))
+               start = index
+            }
+            stack.push([start,heights[i]])
+        }
+
+        for(let i = 0; i < stack.length; i++){
+            maxArea = Math.max(maxArea, stack[i][1] * (heights.length - stack[i][0]) )
+        }
+
+        return maxArea
+}
+
+/////////////
+
+The general idea is to loop through the heights array while keeping a stack of [index, height] pairs.
+If the current height is less than the height at the top of the stack,
+it means we cannot extend the rectangle at the top of the stack any farther to the right.
+
+Therefore, we pop the top of the stack and calculate the area it could have covered.
+
+When pushing a new element, we reuse the starting index from any popped elements,
+allowing the new height to extend as far left as possible.
