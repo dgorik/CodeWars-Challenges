@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findMin = function(nums) {
+    let l = 0
+    let r = nums.length - 1
+
+    while( l < r){
+        let mid = Math.floor((l+r) / 2)
+
+        if(nums[mid] > nums[r]){
+            l = mid + 1
+        }
+        else{
+            r = mid
+        }
+    }
+
+    return nums[l]
+};
+
+// The idea is to repeatedly find the midpoint and determine 
+// whether the right half is sorted. 
+// If nums[mid] > nums[r], it means the pivot (and thus the minimum) 
+// lies in the unsorted right half, so we move the left pointer to mid + 1.
+// Otherwise, the pivot is in the left half (including mid), 
+// so we move the right pointer to mid.
+// The pivot point is where the rotation occurs — and the smallest value 
+// (i.e., the minimum) is always located at or after that pivot.
