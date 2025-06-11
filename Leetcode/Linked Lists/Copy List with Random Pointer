@@ -1,0 +1,32 @@
+/**
+ * @param {_Node} head
+ * @return {_Node}
+ */
+var copyRandomList = function(head) {
+    let cur = head
+    let map = new Map()
+
+    while(cur){
+        let copy = new Node(cur.val)
+        map.set(cur,copy)
+        cur = cur.next
+    }
+
+    cur = head
+
+    while(cur){
+        let copy = map.get(cur)
+        copy.next = cur.next? map.get(cur.next) : null
+        copy.random = cur.random? map.get(cur.random) : null
+        cur = cur.next
+    }
+
+    return map.get(head)
+
+};
+
+// The idea here is to create a map to store copies of each node. You can then use that map to set up pointers by looking at what original nodes are pointing to. 
+- {cur: copy}
+copy.next equals to what cur.next is pointing to. If it points to null, we set copy.next to null
+copy.random equals to what cur.next is pointing to. If it points to null, we set copy.random to null
+
