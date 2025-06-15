@@ -8,7 +8,7 @@ var copyRandomList = function(head) {
 
     while(cur){
         let copy = new Node(cur.val)
-        map.set(cur,copy)
+        map.set(cur,copy) //here we are creating a map where original node = a copy node. Copy node is not pointing to anything and it's a completely new object.
         cur = cur.next
     }
 
@@ -16,7 +16,7 @@ var copyRandomList = function(head) {
 
     while(cur){
         let copy = map.get(cur)
-        copy.next = cur.next? map.get(cur.next) : null
+        copy.next = cur.next? map.get(cur.next) : null //we meed to use map.get(cur.next) to assign copy.next because if we assign to cur.next, copy.next will point to an original node which wouldn't be a deep copy.
         copy.random = cur.random? map.get(cur.random) : null
         cur = cur.next
     }
