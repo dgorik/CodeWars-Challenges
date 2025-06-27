@@ -1,0 +1,28 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var diameterOfBinaryTree = function(root) {
+    let answer = 0
+    function diameter(node){
+        if(!node) return 0
+        let l = diameter(node.left)
+        let r = diameter(node.right)
+        answer = Math.max(answer, l+r)
+        return 1 + Math.max(l,r)
+    }
+    diameter(root)
+    return answer
+};
+
+//The general idea is to find a diameter of each node by adding the lengths of left and right subtrees
+//We then compare the diameter at a current not with the max diameter we have calculated so far
+//We are returing the max between left and right subtree to a parent node bc that max subtree will be used to calculate the parent node diamter
