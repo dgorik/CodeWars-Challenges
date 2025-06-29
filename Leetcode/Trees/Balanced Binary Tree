@@ -1,0 +1,52 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isBalanced = function(root) {
+    function helper(node){
+        if(!node) return 0
+        let l = helper(node.left)
+        if(l === -1){
+            return -1
+        }
+        let r = helper(node.right)
+        if(r === -1){
+            return -1
+        }
+        if(Math.abs(l - r) > 1) return -1
+
+        return 1 + Math.max(l,r)
+    }
+    return helper(root) != -1
+};
+
+//The general idea here is to calculate a height difference between left and right subtrees at each node. If the difference is larger than 1, you automatically return -1 to a parent function call and effectively end the function. 
+
+//This was my solution  (works but let efficient)
+
+class Solution {
+    /**
+     * @param {TreeNode} root
+     * @return {boolean}
+     */
+    isBalanced(root) {
+        let difference = 0
+        function helper(node){
+            if(!node) return 0
+            let l = helper(node.left)
+            let r = helper(node.right)
+            difference = Math.max(difference, Math.abs(l - r))
+            return 1 + Math.max(l,r)
+        }
+        helper(root)
+        return difference <= 1
+    }
+}
