@@ -35,3 +35,8 @@ var isSubtree = function(root, subRoot) {
    
    return hasSubtree(root)
 };
+
+//The general idea here is to traverse an original tree until you find a node that equals the subRoot
+// You then recursively call sameTree to check the two subtree (with root at node and root at subRoot) are the same
+// If there are the same, you return
+// This example is using preorder tree traversal
