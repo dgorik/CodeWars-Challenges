@@ -1,0 +1,23 @@
+/**
+ * @param {number} target
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minSubArrayLen = function(target, nums) {
+    let j = 0
+    let total_sum = 0
+    let window = Infinity
+
+    for(let i = 0; i < nums.length; i++){
+        total_sum += nums[i]
+        while(total_sum >= target){
+            window = Math.min(window, i - j + 1)
+            total_sum -= nums[j]
+            j++
+        }
+    }
+   return window === Infinity? 0: window
+};
+
+//The general idea is to set two pointers to the first element in the array and keep expanding the window until the sum of elements is greater or equal to target value
+//Then you need to try to shrink the window to check if it's possible to make a subarray smaller and still have a sum that is greater or equal to target value
