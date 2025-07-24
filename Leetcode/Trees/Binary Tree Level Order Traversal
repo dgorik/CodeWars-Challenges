@@ -1,0 +1,49 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+    let res = []
+    let q = []
+    q.push(root)
+
+    while(q.length != 0){
+        let level = []
+        length = q.length
+
+        for(let i = 0; i < length; i++){
+            let node = q.shift()
+            if(node){
+                level.push(node.val)
+                q.push(node.left)
+                q.push(node.right)
+            }
+        }
+        if(level.length != 0) res.push(level)
+    }
+    return res
+};
+
+// Push the root node into the queue.
+
+// While the queue is not empty:
+
+// Determine the number of nodes at the current level by checking queue.length.
+
+// For each node in this level:
+
+// Remove it from the front of the queue.
+
+// If it’s the last node in this level, add its value to the result array.
+
+// Push its left child first, then right child, into the queue.
+
+// The result array will contain the visible nodes from the right side of the tree.
