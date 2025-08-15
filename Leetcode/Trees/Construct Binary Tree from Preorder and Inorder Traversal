@@ -1,0 +1,47 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+var buildTree = function(preorder, inorder) {
+    let map = {}
+    let preIdx = 0
+
+    for(let i = 0; i < inorder.length; i++){
+        map[inorder[i]] = i
+    }
+
+    function dfs(l,r){
+        if(l > r) return null
+        let root = new TreeNode(preorder[preIdx++])
+        let mid = map[root.val]
+        root.left = dfs(l, mid - 1)
+        root.right = dfs(mid + 1, r)
+        return root
+    }
+
+    return dfs(0, inorder.length - 1)
+};
+
+
+////////
+
+Take preorder[preIndex] → create new TreeNode (root of current subtree).
+
+Look up that value in the inorder map to get mid.
+
+Recurse to build:
+
+Left subtree from inorder[l … mid-1]
+
+Right subtree from inorder[mid+1 … r]
+
+Advance preIndex each time you create a node.
