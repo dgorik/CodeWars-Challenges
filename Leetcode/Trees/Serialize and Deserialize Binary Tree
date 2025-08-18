@@ -50,3 +50,7 @@ var deserialize = function(data) {
  * Your functions will be called as such:
  * deserialize(serialize(root));
  */
+
+// When you serialize a tree, you need to add all node values as values and "null" values for nodes that are null
+
+// When you deserialize, you need create a new node for values and return "null" for null
