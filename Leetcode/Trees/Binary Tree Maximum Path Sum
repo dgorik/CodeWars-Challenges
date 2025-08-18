@@ -1,0 +1,30 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var maxPathSum = function(root) {
+    let ans = -Infinity
+
+    function dfs(root){
+        if(!root) return 0
+        let l = Math.max(0, dfs(root.left))
+        let r = Math.max(0, dfs(root.right))
+        ans = Math.max(ans, root.val + l + r)
+        return root.val + Math.max(l,r)
+    }
+    dfs(root)
+    return ans
+};
+
+//The general idea is to traverse a tree using a post order traversal.
+//At each root, you calculate the left and right subtrees paths
+//You then update the answer with whatever is larger: an answer seen so far or an answer that was calculated at a current root
+//You path the root.val + math.max(l,r) to the next recursive call 
