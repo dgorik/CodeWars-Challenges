@@ -1,0 +1,41 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+var mergeKLists = function(lists) {
+    let array = []
+    for(let i = 0; i < lists.length; i++){
+        let cur = lists[i]
+        while(cur){
+            array.push(cur.val)
+            cur = cur.next
+        }
+    }
+    array.sort((a,b) => a-b)
+
+    if(array.length == 0) return null
+
+    let head = new ListNode(array[0])
+    let cur = head
+
+    for(let i = 1; i < array.length; i++){
+        let node  = new ListNode(array[i])
+        cur.next = node
+        cur = cur.next
+    }
+
+    return head
+
+};
+
+// THIS IS MY BRUTE FORCE SOLUTION
+
+//The general idea is to extract nodes from the given list and put them into a sorted array
+// We can then loop through that array and used the value of each node to create a linked list (new List Node -> cur.next = node)
