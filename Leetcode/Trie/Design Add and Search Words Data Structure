@@ -1,0 +1,63 @@
+var TrieNode = function() {
+    this.children = {}
+    this.isEnd = false
+};
+
+var WordDictionary = function(){
+    this.root = new TrieNode()
+}
+
+/** 
+ * @param {string} word
+ * @return {void}
+ */
+WordDictionary.prototype.addWord = function(word) {
+    let cur = this.root
+    for(let char of word){
+        if(!cur.children[char]){
+            cur.children[char] = new TrieNode()
+        }
+        cur = cur.children[char]
+    }
+    cur.isEnd = true
+};
+
+/** 
+ * @param {string} word
+ * @return {boolean}
+ */
+WordDictionary.prototype.search = function(word) {
+    function dfs(cur, j){
+        if(j === word.length) return cur.isEnd
+        let char = word[j]
+
+        if(char == "."){
+            for(let child in cur.children){
+                if (dfs(cur.children[child], j + 1)) return true
+            }
+            return false
+        }
+        else{
+            if(!cur.children[char]){
+                return false
+            }
+            return dfs(cur.children[char], j + 1)
+        }
+    }
+    return dfs(this.root, 0)
+};
+
+//The general idea for WordDictionary.prototype.addWord function
+  -You place cur node on the root and start looping through the word character by character
+  -If children (dictionary) in cur node don't have a letter of the word, you create a new node and add it to the dictionary
+  -You move cur pointer to point to the next node
+  -At the end of the loop, you set last node's property isEnd to true
+
+//The general idea for WordDictionary.prototype.search function
+  -you intialize a dfs function that takes a root and index (0) as parameters
+  -the base case is when index == word.length, meaning that you reached the end of the word and must return cur.isEnd (will be false if the word is a prefix and true of the word is the entire branch)
+  -if you encounter a character that is not a ".", you check if children of the cur node have that character. If they don't, you return false. If they do, you move cur node to cur.children[char] and keep exploring
+  -if you encounter a "." character
+      -you loop through every child of cur node children
+      -you recursively return a resul of each dfs call on each child
+      -if any recursive call return true, automatically return true
