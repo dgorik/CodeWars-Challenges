@@ -1,0 +1,96 @@
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
+var findAnagrams = function(s, p) {
+    let ans = []
+    if(p.length > s.length) return ans
+
+    let cnt1 = {}
+    let cnt2 = {}
+
+    for(let i = 0; i < p.length; i++){
+        cnt1[p[i]] = (cnt1[p[i]] || 0) + 1
+        cnt2[s[i]] = (cnt2[s[i]] || 0) + 1
+    }
+
+    function samecounts(a,b){
+        let keysA = Object.keys(a)
+        let keysB = Object.keys(b)
+        if(keysA.length != keysB.length){
+            return false
+        }
+        for(let key of keysA){
+            if(a[key] != b[key]){
+                return false
+            }
+        }
+        return true
+    }
+
+    if(samecounts(cnt1,cnt2)) ans.push(0)
+
+    let l = 0
+    let r = p.length
+
+    while(r < s.length){
+        cnt2[s[r]] = (cnt2[s[r]] || 0) + 1
+        cnt2[s[l]]--
+        if( cnt2[s[l]] == 0) delete cnt2[s[l]]
+        l++
+        if(samecounts(cnt1,cnt2)){
+            ans.push(l)
+        }
+        r++
+    }
+
+    return ans
+};
+
+//The solution above is not optimal, but the key is to compare hash maps. 
+// We start with creating a hashmap for a smaller string and as well as a hashmap for a longer string for the first smalle_string.length number of characters
+// We then enter a loop and start shifting the right pointer up and left pointer up
+// We remove the most left element and add the element at the right pointer to the map. If two maps are equal at any point, we do ans.push[l]
+
+
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
+var findAnagrams = function(s, p) {
+    let ans = []
+    let array_1 = new Array(26).fill(0)
+    let array_2 = new Array(26).fill(0)
+
+    if(p.length > s.length) return []
+
+    for(let i = 0; i < p.length; i++){
+        array_1[p[i].charCodeAt(0) - 'a'.charCodeAt(0)]++
+        array_2[s[i].charCodeAt(0) - 'a'.charCodeAt(0)]++
+    }
+
+    function compare(a,b){
+        if(a.join('') == b.join('')){
+            return true
+        }
+        return false
+    }
+
+    if(compare(array_1, array_2)) ans.push(0)
+
+    let l = 0
+    let r = p.length
+
+    while(r < s.length){
+        array_2[s[r].charCodeAt(0) - 'a'.charCodeAt(0)]++
+        array_2[s[l].charCodeAt(0) - 'a'.charCodeAt(0)]--
+        l++
+        r++
+        if(compare(array_1, array_2)) ans.push(l)
+
+    }
+    return ans
+};
