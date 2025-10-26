@@ -1,0 +1,33 @@
+/**
+ * @param {number} k
+ * @param {number[]} nums
+ */
+var KthLargest = function(k, nums) {
+    this.k = k
+    this.minHeap = new MinPriorityQueue()
+    for(let num of nums){
+        this.add(num)
+    }
+};
+
+/** 
+ * @param {number} val
+ * @return {number}
+ */
+KthLargest.prototype.add = function(val) {
+    this.minHeap.enqueue(val)
+    if(this.minHeap.size() > this.k){
+        this.minHeap.dequeue()
+    }
+    return this.minHeap.front()
+};
+
+/** 
+ * Your KthLargest object will be instantiated and called as such:
+ * var obj = new KthLargest(k, nums)
+ * var param_1 = obj.add(val)
+ */
+
+//The general idea here to initialize a heap and start adding elements to it
+//In the add method, we add an element and then check if minHeap size is greater than k. If yes, we remove the smallest element from the heap
+//We then return the root of the heap, which is the smallest element and kth element (since kth element is the smallest element out of k and we only keep k elements)
