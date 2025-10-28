@@ -1,0 +1,33 @@
+/**
+ * @param {character[][]} grid
+ * @return {number}
+ */
+var numIslands = function(grid) {
+    let count = 0
+    let row_count = grid.length
+    let col_count = grid[0].length
+
+    function dfs(x,y){
+        if(x >= row_count || x < 0 || y >= col_count || y < 0 || grid[x][y] != 1) return
+        grid[x][y] = '0'
+        dfs(x+1, y)
+        dfs(x-1, y)
+        dfs(x, y+1)
+        dfs(x, y-1)
+    }
+
+    for(let i = 0; i < grid.length; i++){
+        for(let j = 0; j < grid[0].length;j++){
+            if(grid[i][j] == '1'){
+                dfs(i,j)
+                count++
+            }
+        }
+    }
+
+    return count
+};
+
+//The general idea here is to start looping through a given grid.
+//When we encounter an island "1", we check the surrounding cells to see if there are any other "1". If there are, we "sink" it as 1s that are next to each other form an island
+//The base case for dfs is either when we encounter "0" or if our dfs call is trying to access a cell that is out of bounds
