@@ -26,3 +26,10 @@ var removeDuplicateLetters = function(s) {
     }
     return stack.join('')
 };
+
+//The general idea is to loop through a string and build up a stack
+//You are adding an element to the stack as well as seen set
+//You remove an element from a stack and seen set if
+    //there are some elements in the stack
+    //the top element in the stack is lexigraph higher that the current char
+    //there is one more [s[i]] in the string, meaning we can safely remove the current s[i] from set and stack
