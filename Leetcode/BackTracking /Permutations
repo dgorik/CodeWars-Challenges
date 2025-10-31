@@ -1,0 +1,25 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+    let ans = []
+    let vis = new Array(nums.length).fill(false)
+    dfs(0,[])
+
+    function dfs(index,subset){
+        if(index == nums.length){
+            ans.push(subset.slice())
+        }
+        for(let i = 0; i < nums.length; i++){
+            if(!vis[i]){
+                vis[i] = true
+                subset[index] = nums[i]
+                dfs(index + 1, subset)
+                vis[i] = false
+                
+            }
+        }
+    }
+    return ans
+};
