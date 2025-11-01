@@ -23,3 +23,38 @@ var permute = function(nums) {
     }
     return ans
 };
+
+
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+    let ans = []
+    let subset = []
+
+    function dfs(){
+       if(subset.length == nums.length){
+        ans.push(subset.slice())
+        return
+       } 
+       for(element of nums){
+          if(!subset.includes(element)){
+            subset.push(element)
+            dfs()
+            subset.pop()
+          }
+       }
+    }
+    dfs()
+    return ans
+};
+
+
+//The general idea is to do a dfs at at each level add an element to the array
+//the first row will have n arraay with a length of 1 where each array consists of one distinct number from nums
+//as we are traversing down, we call dfs but only if the number is not in the array yet (therefore we are using a for loop)
+        //i = 0
+        // we run a dfs if !i in subset
+
